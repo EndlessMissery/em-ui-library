@@ -1,0 +1,67 @@
+.login-form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-mail, .user-pass, .user-name {
+    padding: 5px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+}
+
+.user-dob {
+    padding: 5px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.2);
+    width: 20.5vh;
+}
+
+.login-btn, .reg-btn, .frgt-btn {
+    margin-top: 5px;
+    cursor: pointer;
+    color: var(--text-color);
+    border: none;
+}
+
+.login-btn {
+    background-color: #E50914;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+}
+
+.login-btn:hover {
+    background-color: #fe424b;
+    transition: 0.3s;
+}
+
+.reg-btn, .frgt-btn {
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #E50914;
+}
+
+.reg-btn:hover,
+.frgt-btn:hover {
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.frgt-btn {
+    text-decoration: underline;
+    font-size: 0.8rem;
+}
