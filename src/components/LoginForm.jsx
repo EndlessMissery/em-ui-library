@@ -30,7 +30,7 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
 
     if (userData) {
       if (onLogin) onLogin(userData);
-      localStorage.setItem('token', userData.token); // Zavést httpsOnly pro bezpečnost
+      localStorage.setItem('token', userData.token); // httpOnly pro bezpečnost
     }
   };
 

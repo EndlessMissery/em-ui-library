@@ -57,7 +57,7 @@ const RegisterForm = ({ onRegister, onBackToLogin }) => {
 
     if (result) {
       if (onRegister) onRegister(result);
-      localStorage.setItem('token', result.token); // Zavést httpsOnly pro bezpečnost
+      localStorage.setItem('token', result.token); // httpOnly pro bezpečnost
     }
   };
 
