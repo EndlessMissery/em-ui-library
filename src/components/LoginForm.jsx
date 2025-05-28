@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import '../styles/main.css';
 
 const loginUser = async (loginData) => {
   try {
     const response = await axios.post(
-        'https://reqres.in/api/login',
-        loginData, {
-            headers: {
-                'x-api-key': 'reqres-free-v1'
-            }
-        });
+      'https://reqres.in/api/login',
+      loginData,
+      {
+        headers: {
+          'x-api-key': 'reqres-free-v1'
+        }
+      }
+    );
     return response.data;
   } catch (error) {
     console.error('Login error:', error.response?.data?.message || error.message);
@@ -19,39 +21,52 @@ const loginUser = async (loginData) => {
 };
 
 const LoginForm = ({ onLogin, onSwitchToRegister }) => {
-  const [loginData, setLoginData] = useState({
-    email: '',
-    password: ''
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
 
-  const formSubmit = async (e) => {
-    e.preventDefault();
-    const userData = await loginUser(loginData);
-
+  const onSubmit = async (data) => {
+    const userData = await loginUser(data);
     if (userData) {
+      localStorage.setItem('token', userData.token);
       if (onLogin) onLogin(userData);
-      localStorage.setItem('token', userData.token); // httpOnly pro bezpečnost
+    } else {
+      alert('Login failed. Please check your credentials.');
     }
   };
 
   return (
-    <form className="login-form" onSubmit={formSubmit}>
+    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
       <input
         type="email"
         className="user-mail"
         placeholder="E-mail"
-        id="email"
-        value={loginData.email}
-        onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+        {...register('email', {
+          required: 'E-mail is required',
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: 'Invalid email format'
+          }
+        })}
       />
+      {errors.email && <p className="error">{errors.email.message}</p>}
+
       <input
         type="password"
         className="user-pass"
         placeholder="Password"
-        id="password"
-        value={loginData.password}
-        onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+        {...register('password', {
+          required: 'Password is required',
+          minLength: {
+            value: 6,
+            message: 'Password must be at least 6 characters'
+          }
+        })}
       />
+      {errors.password && <p className="error">{errors.password.message}</p>}
+
       <button type="submit" className="login-btn">Login</button>
       <button type="button" className="reg-btn" onClick={onSwitchToRegister}>Register</button>
       <button type="button" className="frgt-btn">Forgot Password</button>

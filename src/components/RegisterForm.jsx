@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import '../styles/main.css';
 
@@ -7,11 +7,7 @@ const registerUser = async (userData) => {
     const response = await axios.post(
       'https://reqres.in/api/register',
       userData,
-      {
-        headers: {
-          'x-api-key': 'reqres-free-v1'
-        }
-      }
+      { headers: { 'x-api-key': 'reqres-free-v1' } }
     );
     return response.data;
   } catch (error) {
@@ -21,93 +17,91 @@ const registerUser = async (userData) => {
 };
 
 const RegisterForm = ({ onRegister, onBackToLogin }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
-    dateOfBirth: ''
-  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm();
 
-
-  const formSubmit = async (e) => {
-    e.preventDefault();
-    const result = await registerUser(formData);
-
-    if (formData.password !== formData.confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-      }
-      if (formData.dateOfBirth === '') {
-        alert('Please select a date of birth!');
-        return;
-      }
-      if (formData.username.length < 3) {
-        alert('Username must be at least 3 characters long!');
-        return;
-      }
-      if (formData.password.length < 6) {
-        alert('Password must be at least 6 characters long!');
-        return;
-      }
-      if (!formData.email.includes('@')) {
-        alert('Please enter a valid email address!');
-        return;
-      }
-
+  const onSubmit = async (data) => {
+    const result = await registerUser(data);
     if (result) {
+      localStorage.setItem('token', result.token);
       if (onRegister) onRegister(result);
-      localStorage.setItem('token', result.token); // httpOnly pro bezpečnost
+    } else {
+      alert('Registration failed. Try again later.');
     }
   };
 
+  const password = watch('password');
+
   return (
-    <form className="login-form" onSubmit={formSubmit}>
+    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
       <input
         type="email"
         placeholder="E-mail"
         className="user-mail"
-        value={formData.email}
-        required
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        {...register('email', {
+          required: 'E-mail is required',
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: 'Invalid email format'
+          }
+        })}
       />
+      {errors.email && <p className="error">{errors.email.message}</p>}
+
       <input
-        type='username'
+        type="text"
         placeholder="Username"
         className="user-name"
-        value={formData.username}
-        required
-        minLength="3"
-        onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-      ></input>
+        {...register('username', {
+          required: 'Username is required',
+          minLength: {
+            value: 3,
+            message: 'Must be at least 3 characters'
+          }
+        })}
+      />
+      {errors.username && <p className="error">{errors.username.message}</p>}
+
       <input
         type="password"
         placeholder="Password"
         className="user-pass"
-        value={formData.password}
-        required
-        minLength="6"
-        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+        {...register('password', {
+          required: 'Password is required',
+          minLength: {
+            value: 6,
+            message: 'Must be at least 6 characters'
+          }
+        })}
       />
+      {errors.password && <p className="error">{errors.password.message}</p>}
+
       <input
         type="password"
         placeholder="Confirm Password"
         className="user-pass"
-        value={formData.confirmPassword}
-        required
-        minLength="6"
-        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+        {...register('confirmPassword', {
+          validate: value =>
+            value === password || 'Passwords do not match'
+        })}
       />
+      {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
+
       <input
         type="date"
         className="user-dob"
-        id="dateOfBirth"
         min="1900-01-01"
         max={new Date().toISOString().split('T')[0]}
-        required
-        value={formData.dateOfBirth}
-        onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
+        {...register('dateOfBirth', {
+          required: 'Date of birth is required'
+        })}
       />
+      {errors.dateOfBirth && <p className="error">{errors.dateOfBirth.message}</p>}
+
       <button type="submit" className="login-btn">Register</button>
       <button type="button" className="frgt-btn" onClick={onBackToLogin}>Back to Login</button>
     </form>
