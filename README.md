@@ -16,48 +16,12 @@ It contains basic UI elements (atoms), composed components (molecules), larger u
 
 ---
 
-## Components
+## Components list
 
-### Atoms
-- Button
-- Input
-- Checkbox
-- RadioButton
-- Select
-- Label
-- Spinner
-- Textarea
-
-### Molecules
-- Accordion
-- Avatar
-- Badge
-- ButtonGroup
-- Card
-- FormField
-- Modal
-- Notification
-- Tabs
-- Tooltip
-
-### Organisms
-- Dashboard
-- Footer
-- Header
-- ListView
-- Login
-- NotificationCenter
-- Register
-- SearchBar
-- Sidebar
-- UserProfile
-
-### Templates
-- AuthLayout
-- DashboardLayout
-- FormLayout
-- ProfileLayout
-- SettingsLayout
+- [Atoms](#atoms)
+- [Molecules](#molecules)
+- [Organisms](#organisms)
+- [Templates](#templates)
 
 ---
 
@@ -381,46 +345,10 @@ Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší
 
 ## Komponenty
 
-### Atoms
-- Button
-- Input
-- Checkbox
-- RadioButton
-- Select
-- Label
-- Spinner
-- Textarea
-
-### Molecules
-- Accordion
-- Avatar
-- Badge
-- ButtonGroup
-- Card
-- FormField
-- Modal
-- Notification
-- Tabs
-- Tooltip
-
-### Organisms
-- Dashboard
-- Footer
-- Header
-- ListView
-- Login
-- NotificationCenter
-- Register
-- SearchBar
-- Sidebar
-- UserProfile
-
-### Templates
-- AuthLayout
-- DashboardLayout
-- FormLayout
-- ProfileLayout
-- SettingsLayout
+- [Atoms](#atoms)
+- [Molecules](#molecules)
+- [Organisms](#organisms)
+- [Templates](#templates)
 
 ---
 
