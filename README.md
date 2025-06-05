@@ -306,6 +306,7 @@ import { AuthLayout } from 'em-ui-library';
 ## DashboardLayout
 ```
 import { DashboardLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
 function App() {
   const user = { name: 'Name', email: 'example@example.com' };
@@ -313,12 +314,15 @@ function App() {
   const handleLogout = () => {
 
   };
-```
-```
-return (
+
+  return (
     <DashboardLayout user={user} onLogout={handleLogout}>
     </DashboardLayout>
   );
+}
+
+export default App;
+
 ```
 
 ## FormLayout
@@ -672,10 +676,22 @@ import { AuthLayout } from 'em-ui-library';
 ## DashboardLayout
 ```
 import { DashboardLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<DashboardLayout>
-  <h2>Přehled</h2>
-</DashboardLayout>
+function App() {
+  const user = { name: 'Name', email: 'example@example.com' };
+
+  const handleLogout = () => {
+
+  };
+
+  return (
+    <DashboardLayout user={user} onLogout={handleLogout}>
+    </DashboardLayout>
+  );
+}
+
+export default App;
 ```
 
 ## FormLayout
