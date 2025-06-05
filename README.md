@@ -307,6 +307,14 @@ import { AuthLayout } from 'em-ui-library';
 ```
 import { DashboardLayout } from 'em-ui-library';
 
+function App() {
+  const user = { name: 'Name', email: 'example@example.com' };
+
+  const handleLogout = () => {
+
+  };
+```
+```
 <DashboardLayout>
   <h2>Info</h2>
 </DashboardLayout>
