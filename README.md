@@ -35,7 +35,7 @@ npm install em-ui-library
 
 ## Using Components
 
-# atoms from the library:
+## Atoms
 ```
 import { Button } from 'em-ui-library';
 
@@ -51,7 +51,7 @@ function App() {
 
 ---
 
-## Molecules usage examples
+## Molecules
 
 ## Accordion
 ```
@@ -117,7 +117,7 @@ import { Modal, Button } from 'em-ui-library';
 </Modal>
 ```
 
-### Notification
+## Notification
 ```
 import { Notification } from 'em-ui-library';
 
@@ -155,7 +155,7 @@ import { Tooltip } from 'em-ui-library';
 
 ---
 
-### Organisms usage examples
+## Organisms
 
 ## Dashboard
 ```
@@ -264,7 +264,7 @@ import { UserProfile } from 'em-ui-library';
 
 ---
 
-# Templates usage examples
+## Templates
 
 ## AuthLayout
 ```
@@ -365,7 +365,7 @@ npm install em-ui-library
 
 ## Příklady použití komponentů v praxi
 
-# Import atomů z knihovny:
+## Atoms
 ```
 import { Button } from 'em-ui-library';
 
@@ -381,7 +381,7 @@ function App() {
 
 ---
 
-## Příklady využití Molecules
+## Molecules
 
 ## Accordion
 ```
@@ -447,7 +447,7 @@ import { Modal, Button } from 'em-ui-library';
 </Modal>
 ```
 
-### Notification
+## Notification
 ```
 import { Notification } from 'em-ui-library';
 
@@ -485,7 +485,7 @@ import { Tooltip } from 'em-ui-library';
 
 ---
 
-### Příklady využití Organisms
+## Organisms
 
 ## Dashboard
 ```
@@ -594,7 +594,7 @@ import { UserProfile } from 'em-ui-library';
 
 ---
 
-# Příklady využití Templates
+## Templates
 
 ## AuthLayout
 ```
