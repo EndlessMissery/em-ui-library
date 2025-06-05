@@ -27,7 +27,7 @@ npm install em-ui-library
 Using Components
 
 Import components from the library:
-
+```
 import { Button, Input, Card, Login } from 'em-ui-library';
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
     </div>
   );
 }
-
+```
 
 # EM UI Library
 
@@ -71,7 +71,7 @@ npm install em-ui-library
 Použití komponentů
 
 Import komponentů z knihovny:
-
+```
 import { Button, Input, Card, Login } from 'em-ui-library';
 
 function App() {
@@ -82,3 +82,4 @@ function App() {
     </div>
   );
 }
+```
