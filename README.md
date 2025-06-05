@@ -199,7 +199,10 @@ import { Dashboard } from 'em-ui-library';
 
 const stats = [
   { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
-  { id: 2, title: 'Tržby', value: '
+  { id: 2, title: 'Tržby', value: '450 000 Kč', icon: '💰' },
+];
+
+<Dashboard stats={stats} />
 ```
 
 ## Header
@@ -562,7 +565,10 @@ import { Dashboard } from 'em-ui-library';
 
 const stats = [
   { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
-  { id: 2, title: 'Tržby', value: '
+  { id: 2, title: 'Tržby', value: '450 000 Kč', icon: '💰' },
+];
+
+<Dashboard stats={stats} />
 ```
 
 ## Header
