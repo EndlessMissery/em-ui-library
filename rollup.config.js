@@ -27,7 +27,7 @@ export default {
     }),
     postcss({
       extract: true,
-      modules: true
+      modules: false
     })
   ]
 };
