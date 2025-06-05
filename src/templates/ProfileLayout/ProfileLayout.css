@@ -1,0 +1,22 @@
+.profile-layout {
+    max-width: 900px;
+    margin: 3rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-header h2 {
+    margin: 0.5rem 0 0;
+  }
+  
+  .profile-content {
+    margin-top: 2rem;
+  }
+  

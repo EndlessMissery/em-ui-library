@@ -1,0 +1,17 @@
+.auth-layout {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #007bff, #0056b3);
+  }
+  
+  .auth-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    min-width: 320px;
+    max-width: 400px;
+  }
+  

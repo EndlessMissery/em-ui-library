@@ -1,0 +1,22 @@
+.user-profile {
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .user-profile__name {
+    margin: 0.5rem 0 0.25rem;
+  }
+  
+  .user-profile__email {
+    margin: 0 0 1rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .user-profile__actions > button {
+    margin: 0 0.5rem;
+  }
+  

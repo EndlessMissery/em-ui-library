@@ -1,0 +1,10 @@
+.form-field {
+    margin-bottom: 1rem;
+  }
+  
+  .form-field-error {
+    color: #d93025;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  
