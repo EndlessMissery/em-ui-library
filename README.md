@@ -315,9 +315,10 @@ function App() {
   };
 ```
 ```
-<DashboardLayout>
-  <h2>Info</h2>
-</DashboardLayout>
+return (
+    <DashboardLayout user={user} onLogout={handleLogout}>
+    </DashboardLayout>
+  );
 ```
 
 ## FormLayout
