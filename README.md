@@ -16,6 +16,49 @@ It contains basic UI elements (atoms), composed components (molecules), larger u
 
 ---
 
+## Components
+
+### Atoms
+- Button
+- Input
+- Checkbox
+- RadioButton
+- Select
+- Label
+- Spinner
+- Textarea
+
+### Molecules
+- Accordion
+- Avatar
+- Badge
+- ButtonGroup
+- Card
+- FormField
+- Modal
+- Notification
+- Tabs
+- Tooltip
+
+### Organisms
+- Dashboard
+- Footer
+- Header
+- ListView
+- Login
+- NotificationCenter
+- Register
+- SearchBar
+- Sidebar
+- UserProfile
+
+### Templates
+- AuthLayout
+- DashboardLayout
+- FormLayout
+- ProfileLayout
+- SettingsLayout
+
 ## Installation and Usage
 
 ### Installing the library in your project
