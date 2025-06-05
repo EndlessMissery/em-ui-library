@@ -190,7 +190,7 @@ import { Dashboard } from 'em-ui-library';
 
 const stats = [
   { id: 1, title: 'Users', value: 1500, icon: '👥' },
-  { id: 2, title: 'Money', value: '450 000 Kč', icon: '💰' },
+  { id: 2, title: 'Money', value: '450 000 $', icon: '💰' },
 ];
 
 <Dashboard stats={stats} />
