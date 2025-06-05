@@ -17,12 +17,39 @@ It contains basic UI elements (atoms), composed components (molecules), larger u
 ---
 
 ## Components list
-
 - [Atoms](#atoms)
-- [Molecules](#molecules)
-- [Organisms](#organisms)
-- [Templates](#templates)
 
+
+- [Molecules](#molecules)
+  - [Accordion](#accordion)
+  - [Avatar](#avatar)
+  - [Badge](#badge)
+  - [ButtonGroup](#buttongroup) 
+  - [Card](#card)
+  - [FormField](#formfield)
+  - [Modal](#modal)
+  - [Notification](#notification)
+  - [Tabs](#tabs)
+  - [Tooltip](#tooltip)
+
+- [Organisms](#organisms)
+  - [Dashboard](#dashboard)
+  - [Header](#header)
+  - [Footer](#footer)
+  - [ListView](#listview) 
+  - [Login](#login)
+  - [NotificationCenter](#notificationcenter)
+  - [Register](#register)
+  - [SearchBar](#searchbar)
+  - [Sidebar](#sidebar)
+  - [UserProfile](#userprofile)
+
+- [Templates](#templates)
+  - [AuthLayout](#authlayout)
+  - [DashboardLayout](#dashboardlayout)
+  - [FormLayout](#formlayout)
+  - [ProfileLayout](#profilelayout)
+  - [SettingsLayout](#settingslayout)
 ---
 
 ## Installation and Usage
@@ -344,12 +371,39 @@ Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší
 ---
 
 ## Komponenty
-
 - [Atoms](#atoms)
-- [Molecules](#molecules)
-- [Organisms](#organisms)
-- [Templates](#templates)
 
+
+- [Molecules](#molecules)
+  - [Accordion](#accordion)
+  - [Avatar](#avatar)
+  - [Badge](#badge)
+  - [ButtonGroup](#buttongroup) 
+  - [Card](#card)
+  - [FormField](#formfield)
+  - [Modal](#modal)
+  - [Notification](#notification)
+  - [Tabs](#tabs)
+  - [Tooltip](#tooltip)
+
+- [Organisms](#organisms)
+  - [Dashboard](#dashboard)
+  - [Header](#header)
+  - [Footer](#footer)
+  - [ListView](#listview) 
+  - [Login](#login)
+  - [NotificationCenter](#notificationcenter)
+  - [Register](#register)
+  - [SearchBar](#searchbar)
+  - [Sidebar](#sidebar)
+  - [UserProfile](#userprofile)
+
+- [Templates](#templates)
+  - [AuthLayout](#authlayout)
+  - [DashboardLayout](#dashboardlayout)
+  - [FormLayout](#formlayout)
+  - [ProfileLayout](#profilelayout)
+  - [SettingsLayout](#settingslayout)
 ---
 
 ## Instalace a použití
@@ -365,7 +419,7 @@ npm install em-ui-library
 
 ## Příklady použití komponentů v praxi
 
-## Atoms
+## Atoms 
 ```
 import { Button } from 'em-ui-library';
 
