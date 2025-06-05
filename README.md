@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# EM UI Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+EM UI Library is a custom React component library built following Atomic Design principles.  
+It contains basic UI elements (atoms), composed components (molecules), larger units (organisms), templates, and layouts for rapid application development.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Library Structure
 
-### `npm start`
+- **atoms** – basic components like buttons, inputs, labels, checkboxes, etc.
+- **molecules** – composed components such as Card, Modal, Notification, Tabs, ButtonGroup.
+- **organisms** – larger units like Login form, Register form, Dashboard, Notification Center.
+- **templates** – predefined page templates that assemble organisms.
+- **layouts** – base application layouts (e.g. main layout with navigation, sidebar, etc.).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation and Usage
 
-### `npm test`
+### Installing the library in your project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install em-ui-library
+```
 
-### `npm run build`
+Using Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Import components from the library:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+import { Button, Input, Card, Login } from 'em-ui-library';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function App() {
+  return (
+    <div>
+      <Login />
+      <Button>Click me</Button>
+    </div>
+  );
+}
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# EM UI Library
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Popis
+EM UI Library je vlastní React komponentová knihovna postavená podle principů Atomic Designu.  
+Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší celky (organisms), šablony (templates) a layouty pro rychlou tvorbu aplikací.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Struktura knihovny
 
-## Learn More
+- **atoms** – základní komponenty jako tlačítka, inputy, labely, checkboxy atd.
+- **molecules** – složené komponenty, např. Card, Modal, Notification, Tabs, ButtonGroup.
+- **organisms** – větší celky jako Login formulář, Register formulář, Dashboard, Notification Center.
+- **templates** – předdefinované šablony stránek skládající organisms.
+- **layouts** – základní layouty aplikace (např. hlavní layout s navigací, sidebar apod.).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instalace a použití
 
-### Code Splitting
+### Instalace knihovny do projektu
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
 
-### Analyzing the Bundle Size
+npm install em-ui-library
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Použití komponentů
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Import komponentů z knihovny:
 
-### Advanced Configuration
+import { Button, Input, Card, Login } from 'em-ui-library';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+function App() {
+  return (
+    <div>
+      <Login />
+      <Button>Click me</Button>
+    </div>
+  );
+}

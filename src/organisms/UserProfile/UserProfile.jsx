@@ -1,5 +1,6 @@
 import React from 'react';
-import { Avatar, Button } from '../../atoms';
+import { Button } from '../../atoms';
+import { Avatar } from '../../molecules';
 import './UserProfile.css';
 
 function UserProfile({ user, onEdit, onLogout }) {

@@ -1,10 +1,31 @@
-.form-field {
+  .form-field {
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
   }
   
   .form-field-error {
     color: #d93025;
     font-size: 0.85rem;
     margin-top: 0.25rem;
+  }
+  
+  .form-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .form-field input {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-field input:focus {
+    border-color: #007bff;
+    outline: none;
   }
   

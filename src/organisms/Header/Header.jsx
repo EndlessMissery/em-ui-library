@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Avatar } from '../../atoms';
+import { Button } from '../../atoms';
+import { Avatar } from '../../molecules';
 import './Header.css';
 
 function Header({ user, onLogout }) {

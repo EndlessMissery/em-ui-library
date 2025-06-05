@@ -9,17 +9,21 @@ export default {
   output: [
     {
       file: "dist/index.js",
-      format: "esm",
-      sourcemap: true,
+      format: "cjs",
+      exports: "named",
     }
   ],
+  external: ["react", "react-dom"],
   plugins: [
     peerDepsExternal(),
-    resolve(),
+    resolve({
+      extensions: [".js", ".jsx", ".ts", ".tsx"]
+    }),
     commonjs(),
     babel({
       exclude: "node_modules/**",
-      babelHelpers: "bundled"
+      babelHelpers: "bundled",
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
     }),
     postcss({
       modules: true
