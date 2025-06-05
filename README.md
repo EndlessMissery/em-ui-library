@@ -84,8 +84,8 @@ function App() {
 ```
 import { Accordion } from 'em-ui-library';
 
-<Accordion title="Více informací">
-  <p>Obsah akordeonu</p>
+<Accordion title="More information">
+  <p>accordion example</p>
 </Accordion>
 ```
 
@@ -93,14 +93,14 @@ import { Accordion } from 'em-ui-library';
 ```
 import { Avatar } from 'em-ui-library';
 
-<Avatar src="https://example.com/avatar.jpg" alt="Roman Kalita" />
+<Avatar src="https://example.com/avatar.jpg" alt="avatar" />
 ```
 
 ## Badge
 ```
 import { Badge } from 'em-ui-library';
 
-<Badge type="info">Nové</Badge>
+<Badge type="info">New</Badge>
 ```
 
 ## ButtonGroup
@@ -108,8 +108,8 @@ import { Badge } from 'em-ui-library';
 import { ButtonGroup, Button } from 'em-ui-library';
 
 <ButtonGroup>
-  <Button>Uložit</Button>
-  <Button>Zrušit</Button>
+  <Button>Save</Button>
+  <Button>Cancel</Button>
 </ButtonGroup>
 ```
 
@@ -118,8 +118,8 @@ import { ButtonGroup, Button } from 'em-ui-library';
 import { Card } from 'em-ui-library';
 
 <Card>
-  <h3>Název</h3>
-  <p>Obsah karty</p>
+  <h3>Name</h3>
+  <p>Card info</p>
 </Card>
 ```
 
@@ -137,9 +137,9 @@ import { FormField, Input, Label } from 'em-ui-library';
 ```
 import { Modal, Button } from 'em-ui-library';
 
-<Modal isOpen={true} onClose={() => console.log('Zavřeno')}>
-  <h2>Upozornění</h2>
-  <p>Chcete pokračovat?</p>
+<Modal isOpen={true} onClose={() => console.log('Close')}>
+  <h2>Warning</h2>
+  <p>Continue?</p>
   <Button>OK</Button>
 </Modal>
 ```
@@ -152,7 +152,7 @@ function App() {
   return (
     <Notification
       type="success"
-      message="Uloženo úspěšně!"
+      message="Saved!"
     />
   );
 }
@@ -164,8 +164,8 @@ import { Tabs } from 'em-ui-library';
 
 <Tabs
   tabs={[
-    { id: 1, label: "Přehled" },
-    { id: 2, label: "Nastavení" },
+    { id: 1, label: "Tab 1" },
+    { id: 2, label: "Tab 2" },
   ]}
 />
 
@@ -175,7 +175,7 @@ import { Tabs } from 'em-ui-library';
 ```
 import { Tooltip } from 'em-ui-library';
 
-<Tooltip content="Nápověda">
+<Tooltip content="Info">
   <button>?</button>
 </Tooltip>
 ```
@@ -189,8 +189,8 @@ import { Tooltip } from 'em-ui-library';
 import { Dashboard } from 'em-ui-library';
 
 const stats = [
-  { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
-  { id: 2, title: 'Tržby', value: '450 000 Kč', icon: '💰' },
+  { id: 1, title: 'Users', value: 1500, icon: '👥' },
+  { id: 2, title: 'Money', value: '450 000 Kč', icon: '💰' },
 ];
 
 <Dashboard stats={stats} />
@@ -200,7 +200,7 @@ const stats = [
 ```
 import { Header } from 'em-ui-library';
 
-<Header title="Administrace" />
+<Header title="Administration" />
 ```
 
 ## Footer
@@ -218,8 +218,8 @@ import { ListView } from 'em-ui-library';
 
 <ListView
   items={[
-    { id: 1, title: 'Záznam 1' },
-    { id: 2, title: 'Záznam 2' },
+    { id: 1, title: 'Log 1' },
+    { id: 2, title: 'Log 2' },
   ]}
 />
 ```
@@ -228,7 +228,7 @@ import { ListView } from 'em-ui-library';
 ```
 import { Login } from 'em-ui-library';
 
-<Login onSubmit={(data) => console.log('Přihlášen:', data)} />
+<Login onSubmit={(data) => console.log('Login:', data)} />
 ```
 
 ## NotificationCenter
@@ -236,13 +236,13 @@ import { Login } from 'em-ui-library';
 import { NotificationCenter } from 'em-ui-library';
 
 const notifications = [
-  { id: 1, type: 'success', message: 'Úspěšně uloženo' },
-  { id: 2, type: 'error', message: 'Chyba serveru' },
+  { id: 1, type: 'success', message: 'Saved' },
+  { id: 2, type: 'error', message: 'Server error' },
 ];
 
 <NotificationCenter
   notifications={notifications}
-  onDismiss={(id) => console.log('Zavřeno', id)}
+  onDismiss={(id) => console.log('Closed', id)}
 />
 ```
 
@@ -250,7 +250,7 @@ const notifications = [
 ```
 import { Register } from 'em-ui-library';
 
-<Register onSubmit={(data) => console.log('Registrován:', data)} />
+<Register onSubmit={(data) => console.log('Registered:', data)} />
 ```
 
 ## SearchBar
@@ -258,8 +258,8 @@ import { Register } from 'em-ui-library';
 import { SearchBar } from 'em-ui-library';
 
 <SearchBar
-  placeholder="Hledat uživatele"
-  onSearch={(query) => console.log('Hledat:', query)}
+  placeholder="Search user"
+  onSearch={(query) => console.log('Search:', query)}
 />
 ```
 
@@ -270,7 +270,7 @@ import { Sidebar } from 'em-ui-library';
 <Sidebar
   items={[
     { id: 1, label: 'Dashboard' },
-    { id: 2, label: 'Nastavení' },
+    { id: 2, label: 'Settings' },
   ]}
 />
 
@@ -282,7 +282,7 @@ import { UserProfile } from 'em-ui-library';
 
 <UserProfile
   user={{
-    name: 'Roman Kalita',
+    name: 'Name Surname',
     email: 'roman@example.com',
     avatar: 'https://example.com/avatar.jpg',
   }}
@@ -298,8 +298,8 @@ import { UserProfile } from 'em-ui-library';
 import { AuthLayout } from 'em-ui-library';
 
 <AuthLayout>
-  <h1>Přihlášení</h1>
-  {/* Např. <Login /> */}
+  <h1>Login</h1>
+  {/* Ex. <Login /> */}
 </AuthLayout>
 ```
 
@@ -308,7 +308,7 @@ import { AuthLayout } from 'em-ui-library';
 import { DashboardLayout } from 'em-ui-library';
 
 <DashboardLayout>
-  <h2>Přehled</h2>
+  <h2>Info</h2>
 </DashboardLayout>
 ```
 
@@ -316,7 +316,7 @@ import { DashboardLayout } from 'em-ui-library';
 ```
 import { FormLayout } from 'em-ui-library';
 
-<FormLayout title="Nový uživatel" description="Vyplňte prosím všechna pole">
+<FormLayout title="New user" description="Fill all inputs">
   <form>…</form>
 </FormLayout>
 ```
@@ -326,18 +326,18 @@ import { FormLayout } from 'em-ui-library';
 import { ProfileLayout } from 'em-ui-library';
 
 const user = {
-  name: 'Roman Kalita',
-  email: 'roman@example.com',
+  name: 'Name Surname',
+  email: 'example@example.com',
   avatar: 'https://example.com/avatar.jpg',
 };
 
 const tabs = [
-  { id: 1, label: 'Profil' },
-  { id: 2, label: 'Nastavení' },
+  { id: 1, label: 'Profile' },
+  { id: 2, label: 'Settings' },
 ];
 
 <ProfileLayout user={user} tabs={tabs}>
-  <p>Obsah profilu</p>
+  <p>Profile</p>
 </ProfileLayout>
 ```
 
@@ -346,7 +346,7 @@ const tabs = [
 import { SettingsLayout } from 'em-ui-library';
 
 <SettingsLayout>
-  <h2>Nastavení účtu</h2>
+  <h2>Account settings</h2>
 </SettingsLayout>
 ```
 
@@ -639,8 +639,8 @@ import { UserProfile } from 'em-ui-library';
 
 <UserProfile
   user={{
-    name: 'Roman Kalita',
-    email: 'roman@example.com',
+    name: 'Jméno přijmení',
+    email: 'example@example.com',
     avatar: 'https://example.com/avatar.jpg',
   }}
 />
@@ -683,8 +683,8 @@ import { FormLayout } from 'em-ui-library';
 import { ProfileLayout } from 'em-ui-library';
 
 const user = {
-  name: 'Roman Kalita',
-  email: 'roman@example.com',
+  name: 'Jméno přijmení',
+  email: 'example@example.com',
   avatar: 'https://example.com/avatar.jpg',
 };
 
