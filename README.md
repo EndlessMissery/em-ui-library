@@ -59,6 +59,8 @@ It contains basic UI elements (atoms), composed components (molecules), larger u
 - ProfileLayout
 - SettingsLayout
 
+---
+
 ## Installation and Usage
 
 ### Installing the library in your project
@@ -98,6 +100,51 @@ Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší
 - **organisms** – větší celky jako Login formulář, Register formulář, Dashboard, Notification Center.
 - **templates** – předdefinované šablony stránek skládající organisms.
 - **layouts** – základní layouty aplikace (např. hlavní layout s navigací, sidebar apod.).
+
+---
+
+## Komponenty
+
+### Atoms
+- Button
+- Input
+- Checkbox
+- RadioButton
+- Select
+- Label
+- Spinner
+- Textarea
+
+### Molecules
+- Accordion
+- Avatar
+- Badge
+- ButtonGroup
+- Card
+- FormField
+- Modal
+- Notification
+- Tabs
+- Tooltip
+
+### Organisms
+- Dashboard
+- Footer
+- Header
+- ListView
+- Login
+- NotificationCenter
+- Register
+- SearchBar
+- Sidebar
+- UserProfile
+
+### Templates
+- AuthLayout
+- DashboardLayout
+- FormLayout
+- ProfileLayout
+- SettingsLayout
 
 ---
 
