@@ -26,6 +26,7 @@ export default {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
     }),
     postcss({
+      extract: true,
       modules: true
     })
   ]
