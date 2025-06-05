@@ -35,7 +35,7 @@ npm install em-ui-library
 
 ## Using Components
 
-# Import atoms from the library:
+# Using # atoms from the library:
 ```
 import { Button } from 'em-ui-library';
 
