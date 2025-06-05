@@ -279,14 +279,34 @@ import { Sidebar } from 'em-ui-library';
 ## UserProfile
 ```
 import { UserProfile } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<UserProfile
-  user={{
+function App() {
+  const user = {
     name: 'Name Surname',
-    email: 'roman@example.com',
-    avatar: 'https://example.com/avatar.jpg',
-  }}
-/>
+    email: 'example@example.com',
+    avatar: 'https://i.pravatar.cc/80?u=jan' 
+  };
+
+  const handleEdit = () => {
+    console.log('Edit profile');
+  };
+
+  const handleLogout = () => {
+    console.log('Logout');
+  };
+
+  return (
+    <UserProfile
+      user={user}
+      onEdit={handleEdit}
+      onLogout={handleLogout}
+    />
+  );
+}
+
+export default App;
+
 ```
 
 ---
@@ -296,11 +316,18 @@ import { UserProfile } from 'em-ui-library';
 ## AuthLayout
 ```
 import { AuthLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<AuthLayout>
-  <h1>Login</h1>
-  {/* Ex. <Login /> */}
-</AuthLayout>
+function App() {
+  return (
+    <AuthLayout>
+      <p>Please, login.</p>
+      {/* Login form or other content */}
+    </AuthLayout>
+  );
+}
+
+export default App;
 ```
 
 ## DashboardLayout
@@ -649,14 +676,34 @@ import { Sidebar } from 'em-ui-library';
 ## UserProfile
 ```
 import { UserProfile } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<UserProfile
-  user={{
-    name: 'Jméno přijmení',
+function App() {
+  const user = {
+    name: 'Name Surname',
     email: 'example@example.com',
-    avatar: 'https://example.com/avatar.jpg',
-  }}
-/>
+    avatar: 'https://i.pravatar.cc/80?u=jan' 
+  };
+
+  const handleEdit = () => {
+    console.log('Edit profilu');
+  };
+
+  const handleLogout = () => {
+    console.log('Odhlášeno');
+  };
+
+  return (
+    <UserProfile
+      user={user}
+      onEdit={handleEdit}
+      onLogout={handleLogout}
+    />
+  );
+}
+
+export default App;
+
 ```
 
 ---
@@ -666,11 +713,18 @@ import { UserProfile } from 'em-ui-library';
 ## AuthLayout
 ```
 import { AuthLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<AuthLayout>
-  <h1>Přihlášení</h1>
-  {/* Např. <Login /> */}
-</AuthLayout>
+function App() {
+  return (
+    <AuthLayout>
+      <p>Přihlašte se.</p>
+      {/* Např. přihlašovací formulář */}
+    </AuthLayout>
+  );
+}
+
+export default App;
 ```
 
 ## DashboardLayout
