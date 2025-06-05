@@ -69,9 +69,9 @@ It contains basic UI elements (atoms), composed components (molecules), larger u
 npm install em-ui-library
 ```
 
-Using Components
+## Using Components
 
-Import atoms from the library:
+# Import atoms from the library:
 ```
 import { Button } from 'em-ui-library';
 
@@ -87,7 +87,71 @@ function App() {
 
 ---
 
-## How to use components
+## Molecules usage examples
+
+## Accordion
+```
+import { Accordion } from 'em-ui-library';
+
+<Accordion title="Více informací">
+  <p>Obsah akordeonu</p>
+</Accordion>
+```
+
+## Avatar
+```
+import { Avatar } from 'em-ui-library';
+
+<Avatar src="https://example.com/avatar.jpg" alt="Roman Kalita" />
+```
+
+## Badge
+```
+import { Badge } from 'em-ui-library';
+
+<Badge type="info">Nové</Badge>
+```
+
+## ButtonGroup
+```
+import { ButtonGroup, Button } from 'em-ui-library';
+
+<ButtonGroup>
+  <Button>Uložit</Button>
+  <Button>Zrušit</Button>
+</ButtonGroup>
+```
+
+## Card
+```
+import { Card } from 'em-ui-library';
+
+<Card>
+  <h3>Název</h3>
+  <p>Obsah karty</p>
+</Card>
+```
+
+## Form Field
+```
+import { FormField, Input, Label } from 'em-ui-library';
+
+<FormField>
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" />
+</FormField>
+```
+
+## Modal
+```
+import { Modal, Button } from 'em-ui-library';
+
+<Modal isOpen={true} onClose={() => console.log('Zavřeno')}>
+  <h2>Upozornění</h2>
+  <p>Chcete pokračovat?</p>
+  <Button>OK</Button>
+</Modal>
+```
 
 ### Notification
 ```
@@ -103,44 +167,193 @@ function App() {
 }
 ```
 
-### FormLayout
+## Tabs
+```
+import { Tabs } from 'em-ui-library';
+
+<Tabs
+  tabs={[
+    { id: 1, label: "Přehled" },
+    { id: 2, label: "Nastavení" },
+  ]}
+/>
+
+```
+
+## Tooltip
+```
+import { Tooltip } from 'em-ui-library';
+
+<Tooltip content="Nápověda">
+  <button>?</button>
+</Tooltip>
+```
+
+---
+
+### Organisms usage examples
+
+## Dashboard
+```
+import { Dashboard } from 'em-ui-library';
+
+const stats = [
+  { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
+  { id: 2, title: 'Tržby', value: '
+```
+
+## Header
+```
+import { Header } from 'em-ui-library';
+
+<Header title="Administrace" />
+```
+
+## Footer
+```
+import { Footer } from 'em-ui-library';
+
+<Footer>
+  <p>© 2025 EM Company</p>
+</Footer>
+```
+
+## ListView
+```
+import { ListView } from 'em-ui-library';
+
+<ListView
+  items={[
+    { id: 1, title: 'Záznam 1' },
+    { id: 2, title: 'Záznam 2' },
+  ]}
+/>
+```
+
+## Login
+```
+import { Login } from 'em-ui-library';
+
+<Login onSubmit={(data) => console.log('Přihlášen:', data)} />
+```
+
+## NotificationCenter
+```
+import { NotificationCenter } from 'em-ui-library';
+
+const notifications = [
+  { id: 1, type: 'success', message: 'Úspěšně uloženo' },
+  { id: 2, type: 'error', message: 'Chyba serveru' },
+];
+
+<NotificationCenter
+  notifications={notifications}
+  onDismiss={(id) => console.log('Zavřeno', id)}
+/>
+```
+
+## Register
+```
+import { Register } from 'em-ui-library';
+
+<Register onSubmit={(data) => console.log('Registrován:', data)} />
+```
+
+## SearchBar
+```
+import { SearchBar } from 'em-ui-library';
+
+<SearchBar
+  placeholder="Hledat uživatele"
+  onSearch={(query) => console.log('Hledat:', query)}
+/>
+```
+
+## Sidebar
+```
+import { Sidebar } from 'em-ui-library';
+
+<Sidebar
+  items={[
+    { id: 1, label: 'Dashboard' },
+    { id: 2, label: 'Nastavení' },
+  ]}
+/>
+
+```
+
+## UserProfile
+```
+import { UserProfile } from 'em-ui-library';
+
+<UserProfile
+  user={{
+    name: 'Roman Kalita',
+    email: 'roman@example.com',
+    avatar: 'https://example.com/avatar.jpg',
+  }}
+/>
+```
+
+---
+
+# Templates usage examples
+
+## AuthLayout
+```
+import { AuthLayout } from 'em-ui-library';
+
+<AuthLayout>
+  <h1>Přihlášení</h1>
+  {/* Např. <Login /> */}
+</AuthLayout>
+```
+
+## DashboardLayout
+```
+import { DashboardLayout } from 'em-ui-library';
+
+<DashboardLayout>
+  <h2>Přehled</h2>
+</DashboardLayout>
+```
+
+## FormLayout
 ```
 import { FormLayout } from 'em-ui-library';
 
-function App() {
-  return (
-    <FormLayout
-      title="Přihlášení"
-      description="Zadejte své přihlašovací údaje"
-    >
-      <form>{/* Form fields here */}</form>
-    </FormLayout>
-  );
-}
+<FormLayout title="Nový uživatel" description="Vyplňte prosím všechna pole">
+  <form>…</form>
+</FormLayout>
 ```
 
-### ProfileLayout
+## ProfileLayout
 ```
 import { ProfileLayout } from 'em-ui-library';
 
 const user = {
-  name: "Name Surname",
-  email: "example@example.com",
-  avatar: "https://example.com/avatar.jpg",
+  name: 'Roman Kalita',
+  email: 'roman@example.com',
+  avatar: 'https://example.com/avatar.jpg',
 };
 
 const tabs = [
-  { id: 1, label: "Přehled" },
-  { id: 2, label: "Nastavení" },
+  { id: 1, label: 'Profil' },
+  { id: 2, label: 'Nastavení' },
 ];
 
-function App() {
-  return (
-    <ProfileLayout user={user} tabs={tabs}>
-      <p>Tady může být obsah profilu</p>
-    </ProfileLayout>
-  );
-}
+<ProfileLayout user={user} tabs={tabs}>
+  <p>Obsah profilu</p>
+</ProfileLayout>
+```
+
+## SettingsLayout
+```
+import { SettingsLayout } from 'em-ui-library';
+
+<SettingsLayout>
+  <h2>Nastavení účtu</h2>
+</SettingsLayout>
 ```
 
 ---
@@ -217,10 +430,11 @@ Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší
 npm install em-ui-library
 ```
 
+---
 
-Použití komponentů
+## Příklady použití komponentů v praxi
 
-Import atomů z knihovny:
+# Import atomů z knihovny:
 ```
 import { Button } from 'em-ui-library';
 
@@ -236,7 +450,71 @@ function App() {
 
 ---
 
-## Příklady použití komponentů v praxi
+## Příklady využití Molecules
+
+## Accordion
+```
+import { Accordion } from 'em-ui-library';
+
+<Accordion title="Více informací">
+  <p>Obsah akordeonu</p>
+</Accordion>
+```
+
+## Avatar
+```
+import { Avatar } from 'em-ui-library';
+
+<Avatar src="https://example.com/avatar.jpg" alt="Roman Kalita" />
+```
+
+## Badge
+```
+import { Badge } from 'em-ui-library';
+
+<Badge type="info">Nové</Badge>
+```
+
+## ButtonGroup
+```
+import { ButtonGroup, Button } from 'em-ui-library';
+
+<ButtonGroup>
+  <Button>Uložit</Button>
+  <Button>Zrušit</Button>
+</ButtonGroup>
+```
+
+## Card
+```
+import { Card } from 'em-ui-library';
+
+<Card>
+  <h3>Název</h3>
+  <p>Obsah karty</p>
+</Card>
+```
+
+## Form Field
+```
+import { FormField, Input, Label } from 'em-ui-library';
+
+<FormField>
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" />
+</FormField>
+```
+
+## Modal
+```
+import { Modal, Button } from 'em-ui-library';
+
+<Modal isOpen={true} onClose={() => console.log('Zavřeno')}>
+  <h2>Upozornění</h2>
+  <p>Chcete pokračovat?</p>
+  <Button>OK</Button>
+</Modal>
+```
 
 ### Notification
 ```
@@ -252,42 +530,193 @@ function App() {
 }
 ```
 
-### FormLayout
+## Tabs
+```
+import { Tabs } from 'em-ui-library';
+
+<Tabs
+  tabs={[
+    { id: 1, label: "Přehled" },
+    { id: 2, label: "Nastavení" },
+  ]}
+/>
+
+```
+
+## Tooltip
+```
+import { Tooltip } from 'em-ui-library';
+
+<Tooltip content="Nápověda">
+  <button>?</button>
+</Tooltip>
+```
+
+---
+
+### Příklady využití Organisms
+
+## Dashboard
+```
+import { Dashboard } from 'em-ui-library';
+
+const stats = [
+  { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
+  { id: 2, title: 'Tržby', value: '
+```
+
+## Header
+```
+import { Header } from 'em-ui-library';
+
+<Header title="Administrace" />
+```
+
+## Footer
+```
+import { Footer } from 'em-ui-library';
+
+<Footer>
+  <p>© 2025 EM Company</p>
+</Footer>
+```
+
+## ListView
+```
+import { ListView } from 'em-ui-library';
+
+<ListView
+  items={[
+    { id: 1, title: 'Záznam 1' },
+    { id: 2, title: 'Záznam 2' },
+  ]}
+/>
+```
+
+## Login
+```
+import { Login } from 'em-ui-library';
+
+<Login onSubmit={(data) => console.log('Přihlášen:', data)} />
+```
+
+## NotificationCenter
+```
+import { NotificationCenter } from 'em-ui-library';
+
+const notifications = [
+  { id: 1, type: 'success', message: 'Úspěšně uloženo' },
+  { id: 2, type: 'error', message: 'Chyba serveru' },
+];
+
+<NotificationCenter
+  notifications={notifications}
+  onDismiss={(id) => console.log('Zavřeno', id)}
+/>
+```
+
+## Register
+```
+import { Register } from 'em-ui-library';
+
+<Register onSubmit={(data) => console.log('Registrován:', data)} />
+```
+
+## SearchBar
+```
+import { SearchBar } from 'em-ui-library';
+
+<SearchBar
+  placeholder="Hledat uživatele"
+  onSearch={(query) => console.log('Hledat:', query)}
+/>
+```
+
+## Sidebar
+```
+import { Sidebar } from 'em-ui-library';
+
+<Sidebar
+  items={[
+    { id: 1, label: 'Dashboard' },
+    { id: 2, label: 'Nastavení' },
+  ]}
+/>
+
+```
+
+## UserProfile
+```
+import { UserProfile } from 'em-ui-library';
+
+<UserProfile
+  user={{
+    name: 'Roman Kalita',
+    email: 'roman@example.com',
+    avatar: 'https://example.com/avatar.jpg',
+  }}
+/>
+```
+
+---
+
+# Příklady využití Templates
+
+## AuthLayout
+```
+import { AuthLayout } from 'em-ui-library';
+
+<AuthLayout>
+  <h1>Přihlášení</h1>
+  {/* Např. <Login /> */}
+</AuthLayout>
+```
+
+## DashboardLayout
+```
+import { DashboardLayout } from 'em-ui-library';
+
+<DashboardLayout>
+  <h2>Přehled</h2>
+</DashboardLayout>
+```
+
+## FormLayout
 ```
 import { FormLayout } from 'em-ui-library';
 
-function App() {
-  return (
-    <FormLayout
-      title="Přihlášení"
-      description="Zadejte své přihlašovací údaje"
-    >
-      <form>{/* Form fields here */}</form>
-    </FormLayout>
-  );
-}
+<FormLayout title="Nový uživatel" description="Vyplňte prosím všechna pole">
+  <form>…</form>
+</FormLayout>
 ```
 
-### ProfileLayout
+## ProfileLayout
 ```
 import { ProfileLayout } from 'em-ui-library';
 
 const user = {
-  name: "Name Surname",
-  email: "example@example.com",
-  avatar: "https://example.com/avatar.jpg",
+  name: 'Roman Kalita',
+  email: 'roman@example.com',
+  avatar: 'https://example.com/avatar.jpg',
 };
 
 const tabs = [
-  { id: 1, label: "Přehled" },
-  { id: 2, label: "Nastavení" },
+  { id: 1, label: 'Profil' },
+  { id: 2, label: 'Nastavení' },
 ];
 
-function App() {
-  return (
-    <ProfileLayout user={user} tabs={tabs}>
-      <p>Tady může být obsah profilu</p>
-    </ProfileLayout>
-  );
-}
+<ProfileLayout user={user} tabs={tabs}>
+  <p>Obsah profilu</p>
+</ProfileLayout>
 ```
+
+## SettingsLayout
+```
+import { SettingsLayout } from 'em-ui-library';
+
+<SettingsLayout>
+  <h2>Nastavení účtu</h2>
+</SettingsLayout>
+```
+
+---
