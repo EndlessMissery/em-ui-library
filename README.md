@@ -123,7 +123,7 @@ import { Card } from 'em-ui-library';
 </Card>
 ```
 
-## Form Field
+## FormField
 ```
 import { FormField, Input, Label } from 'em-ui-library';
 
@@ -480,7 +480,7 @@ import { Card } from 'em-ui-library';
 </Card>
 ```
 
-## Form Field
+## FormField
 ```
 import { FormField, Input, Label } from 'em-ui-library';
 
