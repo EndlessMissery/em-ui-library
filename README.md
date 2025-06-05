@@ -354,11 +354,30 @@ export default App;
 
 ## FormLayout
 ```
+import React from 'react';
 import { FormLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<FormLayout title="New user" description="Fill all inputs">
-  <form>…</form>
-</FormLayout>
+function App() {
+  return (
+    <FormLayout title="Registrace" description="Fill credentials">
+      <form>
+        <div>
+          <label htmlFor="email">E-mail</label><br />
+          <input type="email" id="email" name="email" />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label><br />
+          <input type="password" id="password" name="password" />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </FormLayout>
+  );
+}
+
+export default App;
+
 ```
 
 ## ProfileLayout
@@ -750,11 +769,30 @@ export default App;
 
 ## FormLayout
 ```
+import React from 'react';
 import { FormLayout } from 'em-ui-library';
+import 'em-ui-library/dist/index.css';
 
-<FormLayout title="Nový uživatel" description="Vyplňte prosím všechna pole">
-  <form>…</form>
-</FormLayout>
+function App() {
+  return (
+    <FormLayout title="Registrace" description="Zadejte prosím své údaje.">
+      <form>
+        <div>
+          <label htmlFor="email">E-mail</label><br />
+          <input type="email" id="email" name="email" />
+        </div>
+        <div>
+          <label htmlFor="password">Heslo</label><br />
+          <input type="password" id="password" name="password" />
+        </div>
+        <button type="submit">Registrovat</button>
+      </form>
+    </FormLayout>
+  );
+}
+
+export default App;
+
 ```
 
 ## ProfileLayout
