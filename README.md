@@ -71,9 +71,9 @@ npm install em-ui-library
 
 Using Components
 
-Import components from the library:
+Import atoms from the library:
 ```
-import { Button, Input, Card, Login } from 'em-ui-library';
+import { Button } from 'em-ui-library';
 
 function App() {
   return (
@@ -84,6 +84,66 @@ function App() {
   );
 }
 ```
+
+---
+
+## How to use components
+
+### Notification
+```
+import { Notification } from 'em-ui-library';
+
+function App() {
+  return (
+    <Notification
+      type="success"
+      message="Uloženo úspěšně!"
+    />
+  );
+}
+```
+
+### FormLayout
+```
+import { FormLayout } from 'em-ui-library';
+
+function App() {
+  return (
+    <FormLayout
+      title="Přihlášení"
+      description="Zadejte své přihlašovací údaje"
+    >
+      <form>{/* Form fields here */}</form>
+    </FormLayout>
+  );
+}
+```
+
+### ProfileLayout
+```
+import { ProfileLayout } from 'em-ui-library';
+
+const user = {
+  name: "Name Surname",
+  email: "example@example.com",
+  avatar: "https://example.com/avatar.jpg",
+};
+
+const tabs = [
+  { id: 1, label: "Přehled" },
+  { id: 2, label: "Nastavení" },
+];
+
+function App() {
+  return (
+    <ProfileLayout user={user} tabs={tabs}>
+      <p>Tady může být obsah profilu</p>
+    </ProfileLayout>
+  );
+}
+```
+
+---
 
 # EM UI Library
 
@@ -160,9 +220,9 @@ npm install em-ui-library
 
 Použití komponentů
 
-Import komponentů z knihovny:
+Import atomů z knihovny:
 ```
-import { Button, Input, Card, Login } from 'em-ui-library';
+import { Button } from 'em-ui-library';
 
 function App() {
   return (
@@ -170,6 +230,64 @@ function App() {
       <Login />
       <Button>Click me</Button>
     </div>
+  );
+}
+```
+
+---
+
+## Příklady použití komponentů v praxi
+
+### Notification
+```
+import { Notification } from 'em-ui-library';
+
+function App() {
+  return (
+    <Notification
+      type="success"
+      message="Uloženo úspěšně!"
+    />
+  );
+}
+```
+
+### FormLayout
+```
+import { FormLayout } from 'em-ui-library';
+
+function App() {
+  return (
+    <FormLayout
+      title="Přihlášení"
+      description="Zadejte své přihlašovací údaje"
+    >
+      <form>{/* Form fields here */}</form>
+    </FormLayout>
+  );
+}
+```
+
+### ProfileLayout
+```
+import { ProfileLayout } from 'em-ui-library';
+
+const user = {
+  name: "Name Surname",
+  email: "example@example.com",
+  avatar: "https://example.com/avatar.jpg",
+};
+
+const tabs = [
+  { id: 1, label: "Přehled" },
+  { id: 2, label: "Nastavení" },
+];
+
+function App() {
+  return (
+    <ProfileLayout user={user} tabs={tabs}>
+      <p>Tady může být obsah profilu</p>
+    </ProfileLayout>
   );
 }
 ```
