@@ -17,7 +17,9 @@ export default {
       exports: "named",
     }
   ],
-  external: ["react", "react-dom"],
+  // react-jsx automatic runtime (tsconfig "jsx": "react-jsx") imports
+  // react/jsx-runtime under the hood — keep it external like react itself.
+  external: ["react", "react-dom", "react/jsx-runtime"],
   plugins: [
     peerDepsExternal(),
     resolve({

@@ -14,7 +14,7 @@ function Avatar({ src, alt, size = 40, name }: AvatarProps) {
     : '';
 
   return src ? (
-    <img src={src} alt={alt} className="avatar" style={{ width: size, height: size }} />
+    <img src={src} alt={alt ?? name ?? ''} className="avatar" style={{ width: size, height: size }} />
   ) : (
     <div className="avatar avatar--placeholder" style={{ width: size, height: size }}>
       {initials}
