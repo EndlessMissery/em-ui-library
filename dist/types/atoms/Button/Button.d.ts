@@ -1,5 +1,4 @@
 import React from 'react';
-import './Button.css';
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
 export interface ButtonProps {
     children: React.ReactNode;

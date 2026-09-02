@@ -8,9 +8,20 @@ export interface InputProps {
   value?: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
+  'aria-invalid'?: boolean;
+  'aria-describedby'?: string;
 }
 
-function Input({ label, name, type = 'text', value, onChange, placeholder }: InputProps) {
+function Input({
+  label,
+  name,
+  type = 'text',
+  value,
+  onChange,
+  placeholder,
+  ['aria-invalid']: ariaInvalid,
+  ['aria-describedby']: ariaDescribedby,
+}: InputProps) {
   return (
     <div className="form-group">
       {label && <label htmlFor={name}>{label}</label>}
@@ -21,6 +32,8 @@ function Input({ label, name, type = 'text', value, onChange, placeholder }: Inp
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedby}
       />
     </div>
   );

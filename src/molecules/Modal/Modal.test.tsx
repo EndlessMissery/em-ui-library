@@ -1,7 +1,22 @@
+import { useState } from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import Modal from './Modal';
+
+function ControlledModal() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open modal</button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Confirm">
+        <button>Confirm</button>
+        <button>Cancel</button>
+      </Modal>
+    </>
+  );
+}
 
 describe('Modal', () => {
   it('renders nothing when closed', () => {
@@ -21,6 +36,15 @@ describe('Modal', () => {
     );
     expect(screen.getByRole('heading', { name: 'Confirm' })).toBeInTheDocument();
     expect(screen.getByText('Are you sure?')).toBeInTheDocument();
+  });
+
+  it('exposes a labelled dialog role', () => {
+    render(
+      <Modal isOpen onClose={() => {}} title="Confirm">
+        Are you sure?
+      </Modal>
+    );
+    expect(screen.getByRole('dialog', { name: 'Confirm' })).toHaveAttribute('aria-modal', 'true');
   });
 
   it('calls onClose when the backdrop is clicked', async () => {
@@ -65,5 +89,67 @@ describe('Modal', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  // NOTE: no accessibility test here on purpose!!! Modal has no role="dialog"
+  it('calls onClose when Escape is pressed', async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(
+      <Modal isOpen onClose={onClose} title="Confirm">
+        Are you sure?
+      </Modal>
+    );
+
+    await user.keyboard('{Escape}');
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('moves focus into the dialog when opened', () => {
+    render(
+      <Modal isOpen onClose={() => {}} title="Confirm">
+        Are you sure?
+      </Modal>
+    );
+    expect(screen.getByRole('dialog')).toHaveFocus();
+  });
+
+  it('restores focus to the trigger element on close', async () => {
+    const user = userEvent.setup();
+    render(<ControlledModal />);
+
+    const openButton = screen.getByRole('button', { name: 'Open modal' });
+    await user.click(openButton);
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+    await user.keyboard('{Escape}');
+
+    expect(openButton).toHaveFocus();
+  });
+
+  it('traps Tab focus inside the dialog', async () => {
+    const user = userEvent.setup();
+    render(<ControlledModal />);
+
+    await user.click(screen.getByRole('button', { name: 'Open modal' }));
+
+    const closeButton = screen.getByRole('button', { name: 'Zavřít modal' });
+    const confirmButton = screen.getByRole('button', { name: 'Confirm' });
+    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
+
+    closeButton.focus();
+    await user.tab();
+    expect(confirmButton).toHaveFocus();
+    await user.tab();
+    expect(cancelButton).toHaveFocus();
+    await user.tab();
+    expect(closeButton).toHaveFocus();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Modal isOpen onClose={() => {}} title="Confirm">
+        Are you sure?
+      </Modal>
+    );
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

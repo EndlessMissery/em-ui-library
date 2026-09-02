@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import './Tooltip.css';
 
 export interface TooltipProps {
@@ -8,6 +8,7 @@ export interface TooltipProps {
 
 function Tooltip({ children, text }: TooltipProps) {
   const [visible, setVisible] = useState(false);
+  const tooltipId = useId();
 
   return (
     <span
@@ -17,9 +18,17 @@ function Tooltip({ children, text }: TooltipProps) {
       tabIndex={0}
       onFocus={() => setVisible(true)}
       onBlur={() => setVisible(false)}
+      onKeyDown={e => {
+        if (e.key === 'Escape') setVisible(false);
+      }}
+      aria-describedby={visible ? tooltipId : undefined}
     >
       {children}
-      {visible && <div className="tooltip-box">{text}</div>}
+      {visible && (
+        <div className="tooltip-box" role="tooltip" id={tooltipId}>
+          {text}
+        </div>
+      )}
     </span>
   );
 }

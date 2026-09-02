@@ -1,5 +1,4 @@
 import React from 'react';
-import './Login.css';
 export interface LoginProps {
     onLogin: () => void;
 }

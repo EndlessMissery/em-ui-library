@@ -1,5 +1,4 @@
 import React from 'react';
-import './Tabs.css';
 export interface TabItem {
     label: React.ReactNode;
     content: React.ReactNode;

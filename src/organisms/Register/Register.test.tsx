@@ -22,8 +22,8 @@ describe('Register', () => {
     const onRegister = vi.fn();
     render(<Register onRegister={onRegister} />);
 
-    await user.type(screen.getByLabelText('Uživatelské jméno'), 'roman');
-    await user.type(screen.getByLabelText('Email'), 'roman@example.com');
+    await user.type(screen.getByLabelText('Uživatelské jméno'), 'user');
+    await user.type(screen.getByLabelText('Email'), 'user@example.com');
     await user.type(screen.getByLabelText('Heslo'), 'secret');
     await user.type(screen.getByLabelText('Potvrďte heslo'), 'secret');
     await user.click(screen.getByRole('button', { name: 'Registrovat se' }));

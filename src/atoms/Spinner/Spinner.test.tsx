@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import Spinner from './Spinner';
 
 describe('Spinner', () => {
@@ -8,7 +9,18 @@ describe('Spinner', () => {
     expect(container.querySelector('.spinner')).toBeInTheDocument();
   });
 
-  // NOTE: no accessibility test here on purpose. A bare `<div class="spinner">`
-  // has no role/label, so a screen reader announces nothing while loading.
-  // Needs role="status" (or aria-live) — tracked for the accessibility pass.
+  it('exposes a status role so screen readers announce the loading state', () => {
+    render(<Spinner />);
+    expect(screen.getByRole('status')).toHaveAccessibleName('Načítání');
+  });
+
+  it('accepts a custom accessible label', () => {
+    render(<Spinner aria-label="Ukládám změny" />);
+    expect(screen.getByRole('status')).toHaveAccessibleName('Ukládám změny');
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Spinner />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

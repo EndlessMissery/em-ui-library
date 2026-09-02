@@ -1,5 +1,4 @@
 import React from 'react';
-import './RadioButton.css';
 export interface RadioButtonProps {
     name?: string;
     value?: string | number;

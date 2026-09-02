@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import Notification from './Notification';
 
 describe('Notification', () => {
@@ -31,8 +32,13 @@ describe('Notification', () => {
     const onClose = vi.fn();
     render(<Notification message="Saved!" onClose={onClose} />);
 
-    await user.click(screen.getByRole('button'));
+    await user.click(screen.getByRole('button', { name: 'Zavřít' }));
 
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Notification message="Saved!" onClose={() => {}} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

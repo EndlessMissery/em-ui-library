@@ -1,5 +1,4 @@
 import React from 'react';
-import './FormField.css';
 export interface FormFieldProps {
     id: string;
     label: React.ReactNode;

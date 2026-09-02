@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notification.css';
 export type NotificationType = 'success' | 'error' | 'warning' | 'info';
 export interface NotificationProps {
     message?: React.ReactNode;

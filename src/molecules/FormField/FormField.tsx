@@ -13,6 +13,8 @@ export interface FormFieldProps {
 }
 
 function FormField({ id, label, value, onChange, placeholder, error, type = 'text' }: FormFieldProps) {
+  const errorId = error ? `${id}-error` : undefined;
+
   return (
     <div className="form-field">
       <Label htmlFor={id}>{label}</Label>
@@ -22,10 +24,14 @@ function FormField({ id, label, value, onChange, placeholder, error, type = 'tex
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        // TODO(a11y phase): Input doesn't forward aria-invalid yet, revisit
-        // once Input is wired up for accessibility attributes.
+        aria-invalid={!!error}
+        aria-describedby={errorId}
       />
-      {error && <p className="form-field-error">{error}</p>}
+      {error && (
+        <p id={errorId} className="form-field-error">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

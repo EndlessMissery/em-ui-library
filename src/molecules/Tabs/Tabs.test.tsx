@@ -16,21 +16,32 @@ describe('Tabs', () => {
     expect(screen.queryByText('Billing content')).not.toBeInTheDocument();
   });
 
-  it('marks the active tab button', () => {
+  it('marks the active tab via aria-selected', () => {
     render(<Tabs tabs={tabs} />);
-    expect(screen.getByRole('button', { name: 'Profile' })).toHaveClass('active');
-    expect(screen.getByRole('button', { name: 'Billing' })).not.toHaveClass('active');
+    expect(screen.getByRole('tab', { name: 'Profile' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: 'Billing' })).toHaveAttribute('aria-selected', 'false');
   });
 
   it('switches content when a different tab is clicked', async () => {
     const user = userEvent.setup();
     render(<Tabs tabs={tabs} />);
 
-    await user.click(screen.getByRole('button', { name: 'Billing' }));
+    await user.click(screen.getByRole('tab', { name: 'Billing' }));
 
     expect(screen.getByText('Billing content')).toBeInTheDocument();
     expect(screen.queryByText('Profile content')).not.toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Billing' })).toHaveClass('active');
+    expect(screen.getByRole('tab', { name: 'Billing' })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('moves focus and activates a tab with arrow keys', async () => {
+    const user = userEvent.setup();
+    render(<Tabs tabs={tabs} />);
+
+    screen.getByRole('tab', { name: 'Profile' }).focus();
+    await user.keyboard('{ArrowRight}');
+
+    expect(screen.getByRole('tab', { name: 'Billing' })).toHaveFocus();
+    expect(screen.getByRole('tab', { name: 'Billing' })).toHaveAttribute('aria-selected', 'true');
   });
 
   it('has no accessibility violations', async () => {

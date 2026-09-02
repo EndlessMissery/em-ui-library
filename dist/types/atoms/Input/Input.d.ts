@@ -1,5 +1,4 @@
 import React from 'react';
-import './Input.css';
 export interface InputProps {
     label?: React.ReactNode;
     name?: string;
@@ -7,6 +6,8 @@ export interface InputProps {
     value?: string | number;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
     placeholder?: string;
+    'aria-invalid'?: boolean;
+    'aria-describedby'?: string;
 }
-declare function Input({ label, name, type, value, onChange, placeholder }: InputProps): React.JSX.Element;
+declare function Input({ label, name, type, value, onChange, placeholder, ['aria-invalid']: ariaInvalid, ['aria-describedby']: ariaDescribedby, }: InputProps): React.JSX.Element;
 export default Input;

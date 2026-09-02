@@ -1,5 +1,4 @@
 import React from 'react';
-import './Accordion.css';
 export interface AccordionItem {
     title: React.ReactNode;
     content: React.ReactNode;

@@ -1,5 +1,4 @@
 import React from 'react';
-import './ListView.css';
 export interface ListViewProps<T> {
     items: T[];
     renderItem: (item: T) => React.ReactNode;

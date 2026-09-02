@@ -1,5 +1,4 @@
 import React from 'react';
-import './FormLayout.css';
 export interface FormLayoutProps {
     title: React.ReactNode;
     description?: React.ReactNode;

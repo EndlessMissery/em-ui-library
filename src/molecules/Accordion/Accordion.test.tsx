@@ -52,6 +52,18 @@ describe('Accordion', () => {
     expect(screen.getByRole('button', { name: 'Second' })).toHaveAttribute('aria-expanded', 'true');
   });
 
+  it('links the header to its panel via aria-controls', async () => {
+    const user = userEvent.setup();
+    render(<Accordion items={items} />);
+
+    const firstHeader = screen.getByRole('button', { name: 'First' });
+    await user.click(firstHeader);
+
+    const panelId = firstHeader.getAttribute('aria-controls');
+    expect(panelId).toBeTruthy();
+    expect(screen.getByText('First content').closest(`#${panelId}`)).toBeInTheDocument();
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(<Accordion items={items} />);
     expect(await axe(container)).toHaveNoViolations();

@@ -1,4 +1,6 @@
 import React from 'react';
-import './Spinner.css';
-declare function Spinner(): React.JSX.Element;
+export interface SpinnerProps {
+    'aria-label'?: string;
+}
+declare function Spinner({ ['aria-label']: ariaLabel }: SpinnerProps): React.JSX.Element;
 export default Spinner;

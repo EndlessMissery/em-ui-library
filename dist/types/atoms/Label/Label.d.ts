@@ -1,5 +1,4 @@
 import React from 'react';
-import './Label.css';
 export interface LabelProps {
     htmlFor?: string;
     children: React.ReactNode;

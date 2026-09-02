@@ -1,5 +1,4 @@
 import React from 'react';
-import './Sidebar.css';
 export interface SidebarLink {
     href: string;
     label: React.ReactNode;

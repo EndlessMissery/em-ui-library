@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import Tooltip from './Tooltip';
 
 describe('Tooltip', () => {
@@ -30,5 +31,34 @@ describe('Tooltip', () => {
     expect(screen.getByText('Hover me').closest('.tooltip-wrapper')).toHaveAttribute('tabindex', '0');
   });
 
-  // NOTE: no accessibility test here on purpose!!!
+  it('links the trigger to the tooltip text via aria-describedby once visible', async () => {
+    const user = userEvent.setup();
+    render(<Tooltip text="More info">Hover me</Tooltip>);
+
+    const trigger = screen.getByText('Hover me').closest('.tooltip-wrapper') as HTMLElement;
+    expect(trigger).not.toHaveAttribute('aria-describedby');
+
+    await user.tab();
+
+    const describedBy = trigger.getAttribute('aria-describedby');
+    expect(describedBy).toBeTruthy();
+    expect(screen.getByRole('tooltip')).toHaveAttribute('id', describedBy as string);
+  });
+
+  it('hides the tooltip on Escape', async () => {
+    const user = userEvent.setup();
+    render(<Tooltip text="More info">Hover me</Tooltip>);
+
+    await user.tab();
+    expect(screen.getByText('More info')).toBeInTheDocument();
+
+    await user.keyboard('{Escape}');
+
+    expect(screen.queryByText('More info')).not.toBeInTheDocument();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Tooltip text="More info">Hover me</Tooltip>);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

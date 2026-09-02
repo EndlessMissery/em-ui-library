@@ -1,5 +1,4 @@
 import React from 'react';
-import './Avatar.css';
 export interface AvatarProps {
     src?: string;
     alt?: string;

@@ -1,5 +1,4 @@
 import React from 'react';
-import './ProfileLayout.css';
 import { TabItem } from '../../molecules';
 export interface ProfileLayoutUser {
     name: string;

@@ -17,7 +17,7 @@ describe('ProfileLayout', () => {
     );
     expect(screen.getByRole('img', { name: 'User Admin' })).toBeInTheDocument();
     expect(screen.getByText('useradmin@example.com')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Overview' })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Overview' })).toBeInTheDocument();
     expect(screen.getByText('Overview content')).toBeInTheDocument();
     expect(screen.getByText('Extra content')).toBeInTheDocument();
   });

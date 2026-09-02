@@ -5,7 +5,7 @@ import Avatar from './Avatar';
 
 describe('Avatar', () => {
   it('renders an image when src is given', () => {
-    render(<Avatar src="/me.png" alt="Roman Kalita" />);
+    render(<Avatar src="/me.png" alt="User Admin" />);
     expect(screen.getByRole('img', { name: 'User Admin' })).toHaveAttribute('src', '/me.png');
   });
 
@@ -13,22 +13,22 @@ describe('Avatar', () => {
   // Avatar. It now falls back to `name` for the img's alt text instead of
   // rendering an unlabelled image.
   it('falls back to name for alt text when alt is not given', () => {
-    render(<Avatar src="/me.png" name="Roman Kalita" />);
+    render(<Avatar src="/me.png" name="User Admin" />);
     expect(screen.getByRole('img', { name: 'User Admin' })).toBeInTheDocument();
   });
 
   it('renders initials as a placeholder when there is no src', () => {
-    render(<Avatar name="Roman Kalita" />);
-    expect(screen.getByText('RK')).toBeInTheDocument();
+    render(<Avatar name="User Admin" />);
+    expect(screen.getByText('UA')).toBeInTheDocument();
   });
 
   it('applies the size to width and height', () => {
-    render(<Avatar name="Roman Kalita" size={80} />);
-    expect(screen.getByText('RK')).toHaveStyle({ width: '80px', height: '80px' });
+    render(<Avatar name="User Admin" size={80} />);
+    expect(screen.getByText('UA')).toHaveStyle({ width: '80px', height: '80px' });
   });
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<Avatar src="/me.png" alt="Roman Kalita" />);
+    const { container } = render(<Avatar src="/me.png" alt="User Admin" />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });

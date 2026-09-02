@@ -1,6 +1,5 @@
 import React from 'react';
 import { HeaderUser } from '../../organisms/Header/Header';
-import './DashboardLayout.css';
 export interface DashboardLayoutProps {
     children: React.ReactNode;
     user: HeaderUser;

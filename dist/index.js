@@ -13,20 +13,22 @@ function Button({ children, onClick, type = 'button', disabled = false, variant 
     return (jsxRuntime.jsx("button", { type: type, onClick: onClick, className: `btn btn-${variant}`, disabled: disabled, children: children }));
 }
 
-function Input({ label, name, type = 'text', value, onChange, placeholder }) {
-    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: name, children: label }), jsxRuntime.jsx("input", { type: type, id: name, name: name, value: value, placeholder: placeholder, onChange: onChange })] }));
+function Input({ label, name, type = 'text', value, onChange, placeholder, ['aria-invalid']: ariaInvalid, ['aria-describedby']: ariaDescribedby, }) {
+    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: name, children: label }), jsxRuntime.jsx("input", { type: type, id: name, name: name, value: value, placeholder: placeholder, onChange: onChange, "aria-invalid": ariaInvalid, "aria-describedby": ariaDescribedby })] }));
 }
 
-function Spinner() {
-    return jsxRuntime.jsx("div", { className: "spinner" });
+function Spinner({ ['aria-label']: ariaLabel = 'Načítání' }) {
+    return jsxRuntime.jsx("div", { className: "spinner", role: "status", "aria-label": ariaLabel });
 }
 
 function Label({ htmlFor, children }) {
     return (jsxRuntime.jsx("label", { htmlFor: htmlFor, style: { display: 'block', marginBottom: '0.5rem' }, children: children }));
 }
 
-function Textarea({ name, value, onChange, placeholder }) {
-    return (jsxRuntime.jsx("textarea", { name: name, value: value, onChange: onChange, placeholder: placeholder, style: { width: '100%', minHeight: '100px', padding: '0.5rem' } }));
+function Textarea({ name, label, value, onChange, placeholder, ['aria-label']: ariaLabel }) {
+    const generatedId = React.useId();
+    const textareaId = name !== null && name !== void 0 ? name : generatedId;
+    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: textareaId, children: label }), jsxRuntime.jsx("textarea", { id: textareaId, name: name, value: value, onChange: onChange, placeholder: placeholder, className: "textarea", "aria-label": !label ? ariaLabel : undefined })] }));
 }
 
 function Checkbox({ id, name, checked, onChange, label }) {
@@ -37,8 +39,10 @@ function RadioButton({ name, value, checked, onChange, label }) {
     return (jsxRuntime.jsxs("label", { style: { marginRight: '1rem' }, children: [jsxRuntime.jsx("input", { type: "radio", name: name, value: value, checked: checked, onChange: onChange }), label] }));
 }
 
-function Select({ name, value, onChange, options }) {
-    return (jsxRuntime.jsx("select", { name: name, value: value, onChange: onChange, children: options.map(opt => (jsxRuntime.jsx("option", { value: opt.value, children: opt.label }, opt.value))) }));
+function Select({ name, label, value, onChange, options, ['aria-label']: ariaLabel }) {
+    const generatedId = React.useId();
+    const selectId = name !== null && name !== void 0 ? name : generatedId;
+    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: selectId, children: label }), jsxRuntime.jsx("select", { id: selectId, name: name, value: value, onChange: onChange, className: "select", "aria-label": !label ? ariaLabel : undefined, children: options.map(opt => (jsxRuntime.jsx("option", { value: opt.value, children: opt.label }, opt.value))) })] }));
 }
 
 function Divider() {
@@ -60,10 +64,16 @@ function Avatar({ src, alt, size = 40, name }) {
 
 function Accordion({ items }) {
     const [openIndex, setOpenIndex] = React.useState(null);
+    const baseId = React.useId();
     const toggleIndex = (idx) => {
         setOpenIndex(openIndex === idx ? null : idx);
     };
-    return (jsxRuntime.jsx("div", { className: "accordion", children: items.map((item, idx) => (jsxRuntime.jsxs("div", { className: "accordion-item", children: [jsxRuntime.jsx("button", { className: "accordion-header", onClick: () => toggleIndex(idx), "aria-expanded": openIndex === idx, children: item.title }), openIndex === idx && (jsxRuntime.jsx("div", { className: "accordion-content", children: item.content }))] }, idx))) }));
+    return (jsxRuntime.jsx("div", { className: "accordion", children: items.map((item, idx) => {
+            const headerId = `${baseId}-header-${idx}`;
+            const panelId = `${baseId}-panel-${idx}`;
+            const isOpen = openIndex === idx;
+            return (jsxRuntime.jsxs("div", { className: "accordion-item", children: [jsxRuntime.jsx("button", { id: headerId, className: "accordion-header", onClick: () => toggleIndex(idx), "aria-expanded": isOpen, "aria-controls": panelId, children: item.title }), isOpen && (jsxRuntime.jsx("div", { id: panelId, role: "region", "aria-labelledby": headerId, className: "accordion-content", children: item.content }))] }, idx));
+        }) }));
 }
 
 function Badge({ children, variant = 'primary' }) {
@@ -79,33 +89,110 @@ function Card({ title, className, children }) {
 }
 
 function FormField({ id, label, value, onChange, placeholder, error, type = 'text' }) {
-    return (jsxRuntime.jsxs("div", { className: "form-field", children: [jsxRuntime.jsx(Label, { htmlFor: id, children: label }), jsxRuntime.jsx(Input, { name: id, type: type, value: value, onChange: onChange, placeholder: placeholder }), error && jsxRuntime.jsx("p", { className: "form-field-error", children: error })] }));
+    const errorId = error ? `${id}-error` : undefined;
+    return (jsxRuntime.jsxs("div", { className: "form-field", children: [jsxRuntime.jsx(Label, { htmlFor: id, children: label }), jsxRuntime.jsx(Input, { name: id, type: type, value: value, onChange: onChange, placeholder: placeholder, "aria-invalid": !!error, "aria-describedby": errorId }), error && (jsxRuntime.jsx("p", { id: errorId, className: "form-field-error", children: error }))] }));
 }
 
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 function Modal({ isOpen, onClose, title, children }) {
+    const contentRef = React.useRef(null);
+    const previouslyFocusedRef = React.useRef(null);
+    const titleId = React.useId();
+    React.useEffect(() => {
+        var _a;
+        if (!isOpen)
+            return;
+        previouslyFocusedRef.current = document.activeElement;
+        (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+                onClose();
+                return;
+            }
+            if (e.key === 'Tab' && contentRef.current) {
+                const focusable = contentRef.current.querySelectorAll(FOCUSABLE_SELECTOR);
+                if (focusable.length === 0)
+                    return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+                else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            var _a;
+            document.removeEventListener('keydown', handleKeyDown);
+            (_a = previouslyFocusedRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        };
+    }, [isOpen, onClose]);
     if (!isOpen)
         return null;
-    return (jsxRuntime.jsx("div", { className: "modal-backdrop", onClick: onClose, children: jsxRuntime.jsxs("div", { className: "modal-content", onClick: e => e.stopPropagation(), children: [jsxRuntime.jsxs("header", { className: "modal-header", children: [jsxRuntime.jsx("h2", { children: title }), jsxRuntime.jsx("button", { className: "modal-close", onClick: onClose, "aria-label": "Zav\u0159\u00EDt modal", children: "\u00D7" })] }), jsxRuntime.jsx("div", { className: "modal-body", children: children })] }) }));
+    return (jsxRuntime.jsx("div", { className: "modal-backdrop", onClick: onClose, children: jsxRuntime.jsxs("div", { className: "modal-content", role: "dialog", "aria-modal": "true", "aria-labelledby": titleId, ref: contentRef, tabIndex: -1, onClick: e => e.stopPropagation(), children: [jsxRuntime.jsxs("header", { className: "modal-header", children: [jsxRuntime.jsx("h2", { id: titleId, children: title }), jsxRuntime.jsx("button", { className: "modal-close", onClick: onClose, "aria-label": "Zav\u0159\u00EDt modal", children: "\u00D7" })] }), jsxRuntime.jsx("div", { className: "modal-body", children: children })] }) }));
 }
 
 function Notification({ message, type = 'success', onClose }) {
     if (!message)
         return null;
-    return (jsxRuntime.jsxs("div", { className: `notification ${type}`, children: [jsxRuntime.jsx("span", { children: message }), jsxRuntime.jsx("button", { onClick: onClose, children: "\u00D7" })] }));
+    return (jsxRuntime.jsxs("div", { className: `notification ${type}`, children: [jsxRuntime.jsx("span", { children: message }), jsxRuntime.jsx("button", { onClick: onClose, "aria-label": "Zav\u0159\u00EDt", children: "\u00D7" })] }));
 }
 
 function Tabs({ tabs }) {
     const [activeIndex, setActiveIndex] = React.useState(0);
-    return (jsxRuntime.jsxs("div", { className: "tabs", children: [jsxRuntime.jsx("nav", { className: "tabs-nav", children: tabs.map((tab, idx) => (jsxRuntime.jsx("button", { className: `tabs-nav-button ${idx === activeIndex ? 'active' : ''}`, onClick: () => setActiveIndex(idx), children: tab.label }, idx))) }), jsxRuntime.jsx("div", { className: "tabs-content", children: tabs[activeIndex].content })] }));
+    const baseId = React.useId();
+    const tabRefs = React.useRef([]);
+    const activate = (idx) => {
+        var _a;
+        setActiveIndex(idx);
+        (_a = tabRefs.current[idx]) === null || _a === void 0 ? void 0 : _a.focus();
+    };
+    const handleKeyDown = (e, idx) => {
+        switch (e.key) {
+            case 'ArrowRight':
+                e.preventDefault();
+                activate((idx + 1) % tabs.length);
+                break;
+            case 'ArrowLeft':
+                e.preventDefault();
+                activate((idx - 1 + tabs.length) % tabs.length);
+                break;
+            case 'Home':
+                e.preventDefault();
+                activate(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                activate(tabs.length - 1);
+                break;
+        }
+    };
+    return (jsxRuntime.jsxs("div", { className: "tabs", children: [jsxRuntime.jsx("nav", { className: "tabs-nav", role: "tablist", children: tabs.map((tab, idx) => {
+                    const tabId = `${baseId}-tab-${idx}`;
+                    const panelId = `${baseId}-panel-${idx}`;
+                    const isActive = idx === activeIndex;
+                    return (jsxRuntime.jsx("button", { ref: el => {
+                            tabRefs.current[idx] = el;
+                        }, id: tabId, role: "tab", "aria-selected": isActive, "aria-controls": panelId, tabIndex: isActive ? 0 : -1, className: `tabs-nav-button ${isActive ? 'active' : ''}`, onClick: () => setActiveIndex(idx), onKeyDown: e => handleKeyDown(e, idx), children: tab.label }, idx));
+                }) }), jsxRuntime.jsx("div", { className: "tabs-content", role: "tabpanel", id: `${baseId}-panel-${activeIndex}`, "aria-labelledby": `${baseId}-tab-${activeIndex}`, tabIndex: 0, children: tabs[activeIndex].content })] }));
 }
 
 function Tooltip({ children, text }) {
     const [visible, setVisible] = React.useState(false);
-    return (jsxRuntime.jsxs("span", { className: "tooltip-wrapper", onMouseEnter: () => setVisible(true), onMouseLeave: () => setVisible(false), tabIndex: 0, onFocus: () => setVisible(true), onBlur: () => setVisible(false), children: [children, visible && jsxRuntime.jsx("div", { className: "tooltip-box", children: text })] }));
+    const tooltipId = React.useId();
+    return (jsxRuntime.jsxs("span", { className: "tooltip-wrapper", onMouseEnter: () => setVisible(true), onMouseLeave: () => setVisible(false), tabIndex: 0, onFocus: () => setVisible(true), onBlur: () => setVisible(false), onKeyDown: e => {
+            if (e.key === 'Escape')
+                setVisible(false);
+        }, "aria-describedby": visible ? tooltipId : undefined, children: [children, visible && (jsxRuntime.jsx("div", { className: "tooltip-box", role: "tooltip", id: tooltipId, children: text }))] }));
 }
 
 function Dashboard({ stats }) {
-    return (jsxRuntime.jsxs("section", { className: "dashboard", children: [jsxRuntime.jsx("h1", { children: "Dashboard" }), jsxRuntime.jsx("div", { className: "dashboard-cards", children: stats.map(({ id, title, value, icon }) => (jsxRuntime.jsxs(Card, { className: "dashboard-card", children: [jsxRuntime.jsx("div", { className: "dashboard-card-icon", children: icon }), jsxRuntime.jsxs("div", { className: "dashboard-card-info", children: [jsxRuntime.jsx("h3", { children: title }), jsxRuntime.jsx("p", { children: value })] })] }, id))) })] }));
+    return (jsxRuntime.jsxs("section", { className: "dashboard", children: [jsxRuntime.jsx("h1", { children: "Dashboard" }), jsxRuntime.jsx("div", { className: "dashboard-cards", children: stats.map(({ id, title, value, icon }) => (jsxRuntime.jsxs(Card, { className: "dashboard-card", children: [jsxRuntime.jsx("div", { className: "dashboard-card-icon", children: icon }), jsxRuntime.jsxs("div", { className: "dashboard-card-info", children: [jsxRuntime.jsx("h2", { children: title }), jsxRuntime.jsx("p", { children: value })] })] }, id))) })] }));
 }
 
 function Footer() {

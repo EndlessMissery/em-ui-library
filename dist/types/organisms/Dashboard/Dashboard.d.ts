@@ -1,5 +1,4 @@
 import React from 'react';
-import './Dashboard.css';
 export interface DashboardStat {
     id: string | number;
     title: React.ReactNode;

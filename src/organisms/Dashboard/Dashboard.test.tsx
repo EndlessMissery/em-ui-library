@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import Dashboard from './Dashboard';
 
 const stats = [
@@ -21,5 +22,13 @@ describe('Dashboard', () => {
     expect(container.querySelectorAll('.dashboard-card')).toHaveLength(2);
   });
 
-  // NOTE: no accessibility test here on purpose. The stat cards jump straight from the page's <h1> to <h3>, skipping <h2> — heading-order violation
+  it('keeps stat card titles at heading level 2', () => {
+    render(<Dashboard stats={stats} />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Users' })).toBeInTheDocument();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Dashboard stats={stats} />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });

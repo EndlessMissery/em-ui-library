@@ -1,6 +1,5 @@
 import React from 'react';
 import { HeaderUser } from '../../organisms/Header/Header';
-import './SettingsLayout.css';
 export interface SettingsLayoutProps {
     user: HeaderUser;
     onLogout?: () => void;

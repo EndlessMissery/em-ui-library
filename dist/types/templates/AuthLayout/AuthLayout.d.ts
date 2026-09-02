@@ -1,5 +1,4 @@
 import React from 'react';
-import './AuthLayout.css';
 export interface AuthLayoutProps {
     children: React.ReactNode;
 }

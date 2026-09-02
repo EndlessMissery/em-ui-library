@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "rollup -c && npm run build:types",
-    "build:types": "tsc -p tsconfig.build.json",
+    "build:types": "tsc -p tsconfig.build.json && node scripts/strip-css-imports.js",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -1,6 +1,5 @@
 import React from 'react';
 import { NotificationType } from '../../molecules';
-import './NotificationCenter.css';
 export interface NotificationItem {
     id: string | number;
     type?: NotificationType;

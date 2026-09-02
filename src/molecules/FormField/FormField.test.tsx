@@ -32,6 +32,23 @@ describe('FormField', () => {
     expect(screen.queryByText('Required')).not.toBeInTheDocument();
   });
 
+  it('marks the input as invalid and links it to the error message', () => {
+    render(
+      <FormField id="username" label="Username" value="" onChange={() => {}} error="Required" />
+    );
+    const input = screen.getByLabelText('Username');
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(input).toHaveAttribute('aria-describedby', 'username-error');
+    expect(screen.getByText('Required')).toHaveAttribute('id', 'username-error');
+  });
+
+  it('does not mark the input as invalid when there is no error', () => {
+    render(<FormField id="username" label="Username" value="" onChange={() => {}} />);
+    const input = screen.getByLabelText('Username');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input).not.toHaveAttribute('aria-describedby');
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(
       <FormField id="username" label="Username" value="" onChange={() => {}} />
