@@ -1,0 +1,30 @@
+name: Publish to GitHub Packages
+
+# GitHub's npm registry requires the package name to be scoped to the
+# repo owner (@endlessmissery/...). The real npmjs.org package stays
+# unscoped ("em-ui-library") — `npm pkg set` here only rewrites the
+# name inside this runner's checkout, never the committed package.json.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: '@endlessmissery'
+      - run: npm ci
+      - run: npm pkg set name=@endlessmissery/em-ui-library
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
