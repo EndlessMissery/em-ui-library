@@ -7,6 +7,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EndlessMissery/em-ui-library.git"
+  },
+  "homepage": "https://github.com/EndlessMissery/em-ui-library#readme",
+  "bugs": {
+    "url": "https://github.com/EndlessMissery/em-ui-library/issues"
+  },
   "scripts": {
     "build": "rollup -c && npm run build:types",
     "build:types": "tsc -p tsconfig.build.json && node scripts/strip-css-imports.js",
