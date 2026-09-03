@@ -14,15 +14,15 @@ function Button({ children, onClick, type = 'button', disabled = false, variant 
 }
 
 function Input({ label, name, type = 'text', value, onChange, placeholder, ['aria-invalid']: ariaInvalid, ['aria-describedby']: ariaDescribedby, }) {
-    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: name, children: label }), jsxRuntime.jsx("input", { type: type, id: name, name: name, value: value, placeholder: placeholder, onChange: onChange, "aria-invalid": ariaInvalid, "aria-describedby": ariaDescribedby })] }));
+    return (jsxRuntime.jsxs("div", { className: "form-group", children: [label && jsxRuntime.jsx("label", { htmlFor: name, children: label }), jsxRuntime.jsx("input", { type: type, id: name, name: name, className: "input", value: value, placeholder: placeholder, onChange: onChange, "aria-invalid": ariaInvalid, "aria-describedby": ariaDescribedby })] }));
 }
 
-function Spinner({ ['aria-label']: ariaLabel = 'Načítání' }) {
+function Spinner({ ['aria-label']: ariaLabel = 'Loading' }) {
     return jsxRuntime.jsx("div", { className: "spinner", role: "status", "aria-label": ariaLabel });
 }
 
 function Label({ htmlFor, children }) {
-    return (jsxRuntime.jsx("label", { htmlFor: htmlFor, style: { display: 'block', marginBottom: '0.5rem' }, children: children }));
+    return (jsxRuntime.jsx("label", { htmlFor: htmlFor, className: "label", children: children }));
 }
 
 function Textarea({ name, label, value, onChange, placeholder, ['aria-label']: ariaLabel }) {
@@ -32,11 +32,11 @@ function Textarea({ name, label, value, onChange, placeholder, ['aria-label']: a
 }
 
 function Checkbox({ id, name, checked, onChange, label }) {
-    return (jsxRuntime.jsxs("div", { style: { marginBottom: '0.5rem' }, children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, checked: checked, onChange: onChange }), jsxRuntime.jsx("label", { htmlFor: id, style: { marginLeft: '0.5rem' }, children: label })] }));
+    return (jsxRuntime.jsxs("div", { className: "checkbox-wrapper", children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, checked: checked, onChange: onChange }), jsxRuntime.jsx("label", { htmlFor: id, children: label })] }));
 }
 
 function RadioButton({ name, value, checked, onChange, label }) {
-    return (jsxRuntime.jsxs("label", { style: { marginRight: '1rem' }, children: [jsxRuntime.jsx("input", { type: "radio", name: name, value: value, checked: checked, onChange: onChange }), label] }));
+    return (jsxRuntime.jsxs("label", { className: "radio-button", children: [jsxRuntime.jsx("input", { type: "radio", name: name, value: value, checked: checked, onChange: onChange }), label] }));
 }
 
 function Select({ name, label, value, onChange, options, ['aria-label']: ariaLabel }) {
@@ -46,12 +46,12 @@ function Select({ name, label, value, onChange, options, ['aria-label']: ariaLab
 }
 
 function Divider() {
-    return (jsxRuntime.jsx("hr", { style: { border: 'none', borderTop: '1px solid #ccc', margin: '1rem 0' } }));
+    return jsxRuntime.jsx("hr", { className: "divider" });
 }
 
 function Heading({ level = 1, children }) {
     const Tag = `h${level}`;
-    return jsxRuntime.jsx(Tag, { children: children });
+    return jsxRuntime.jsx(Tag, { className: "heading", children: children });
 }
 
 function Avatar({ src, alt, size = 40, name }) {
@@ -134,13 +134,13 @@ function Modal({ isOpen, onClose, title, children }) {
     }, [isOpen, onClose]);
     if (!isOpen)
         return null;
-    return (jsxRuntime.jsx("div", { className: "modal-backdrop", onClick: onClose, children: jsxRuntime.jsxs("div", { className: "modal-content", role: "dialog", "aria-modal": "true", "aria-labelledby": titleId, ref: contentRef, tabIndex: -1, onClick: e => e.stopPropagation(), children: [jsxRuntime.jsxs("header", { className: "modal-header", children: [jsxRuntime.jsx("h2", { id: titleId, children: title }), jsxRuntime.jsx("button", { className: "modal-close", onClick: onClose, "aria-label": "Zav\u0159\u00EDt modal", children: "\u00D7" })] }), jsxRuntime.jsx("div", { className: "modal-body", children: children })] }) }));
+    return (jsxRuntime.jsx("div", { className: "modal-backdrop", onClick: onClose, children: jsxRuntime.jsxs("div", { className: "modal-content", role: "dialog", "aria-modal": "true", "aria-labelledby": titleId, ref: contentRef, tabIndex: -1, onClick: e => e.stopPropagation(), children: [jsxRuntime.jsxs("header", { className: "modal-header", children: [jsxRuntime.jsx("h2", { id: titleId, children: title }), jsxRuntime.jsx("button", { className: "modal-close", onClick: onClose, "aria-label": "Close modal", children: "\u00D7" })] }), jsxRuntime.jsx("div", { className: "modal-body", children: children })] }) }));
 }
 
 function Notification({ message, type = 'success', onClose }) {
     if (!message)
         return null;
-    return (jsxRuntime.jsxs("div", { className: `notification ${type}`, children: [jsxRuntime.jsx("span", { children: message }), jsxRuntime.jsx("button", { onClick: onClose, "aria-label": "Zav\u0159\u00EDt", children: "\u00D7" })] }));
+    return (jsxRuntime.jsxs("div", { className: `notification ${type}`, children: [jsxRuntime.jsx("span", { children: message }), jsxRuntime.jsx("button", { onClick: onClose, "aria-label": "Close", children: "\u00D7" })] }));
 }
 
 function Tabs({ tabs }) {
@@ -192,20 +192,20 @@ function Tooltip({ children, text }) {
 }
 
 function Dashboard({ stats }) {
-    return (jsxRuntime.jsxs("section", { className: "dashboard", children: [jsxRuntime.jsx("h1", { children: "Dashboard" }), jsxRuntime.jsx("div", { className: "dashboard-cards", children: stats.map(({ id, title, value, icon }) => (jsxRuntime.jsxs(Card, { className: "dashboard-card", children: [jsxRuntime.jsx("div", { className: "dashboard-card-icon", children: icon }), jsxRuntime.jsxs("div", { className: "dashboard-card-info", children: [jsxRuntime.jsx("h2", { children: title }), jsxRuntime.jsx("p", { children: value })] })] }, id))) })] }));
+    return (jsxRuntime.jsxs("section", { className: "dashboard", children: [jsxRuntime.jsx(Heading, { level: 1, children: "Dashboard" }), jsxRuntime.jsx("div", { className: "dashboard-cards", children: stats.map(({ id, title, value, icon }) => (jsxRuntime.jsxs(Card, { className: "dashboard-card", children: [jsxRuntime.jsx("div", { className: "dashboard-card-icon", children: icon }), jsxRuntime.jsxs("div", { className: "dashboard-card-info", children: [jsxRuntime.jsx("h2", { children: title }), jsxRuntime.jsx("p", { children: value })] })] }, id))) })] }));
 }
 
 function Footer() {
-    return (jsxRuntime.jsxs("footer", { className: "footer", children: ["\u00A9 ", new Date().getFullYear(), " MyApp. V\u0161echna pr\u00E1va vyhrazena."] }));
+    return (jsxRuntime.jsxs("footer", { className: "footer", children: ["\u00A9 ", new Date().getFullYear(), " MyApp. All rights reserved."] }));
 }
 
 function Header({ user, onLogout }) {
-    return (jsxRuntime.jsxs("header", { className: "header", children: [jsxRuntime.jsx("div", { className: "header__logo", children: "MyApp" }), jsxRuntime.jsxs("nav", { className: "header__nav", children: [jsxRuntime.jsx("a", { href: "/", children: "Dom\u016F" }), jsxRuntime.jsx("a", { href: "/dashboard", children: "Dashboard" }), jsxRuntime.jsx("a", { href: "/settings", children: "Nastaven\u00ED" })] }), jsxRuntime.jsxs("div", { className: "header__user", children: [jsxRuntime.jsx(Avatar, { name: user.name, src: user.avatar }), jsxRuntime.jsx("span", { className: "header__username", children: user.name }), jsxRuntime.jsx(Button, { onClick: onLogout, children: "Odhl\u00E1sit se" })] })] }));
+    return (jsxRuntime.jsxs("header", { className: "header", children: [jsxRuntime.jsx("div", { className: "header__logo", children: "MyApp" }), jsxRuntime.jsxs("nav", { className: "header__nav", children: [jsxRuntime.jsx("a", { href: "/", children: "Home" }), jsxRuntime.jsx("a", { href: "/dashboard", children: "Dashboard" }), jsxRuntime.jsx("a", { href: "/settings", children: "Settings" })] }), jsxRuntime.jsxs("div", { className: "header__user", children: [jsxRuntime.jsx(Avatar, { name: user.name, src: user.avatar }), jsxRuntime.jsx("span", { className: "header__username", children: user.name }), jsxRuntime.jsx(Button, { onClick: onLogout, children: "Log out" })] })] }));
 }
 
 function ListView({ items, renderItem }) {
     if (!items || items.length === 0) {
-        return jsxRuntime.jsx("div", { className: "listview-empty", children: "\u017D\u00E1dn\u00E9 polo\u017Eky" });
+        return jsxRuntime.jsx("div", { className: "listview-empty", children: "No items" });
     }
     return (jsxRuntime.jsx("ul", { className: "listview", children: items.map((item, idx) => (jsxRuntime.jsx("li", { className: "listview-item", children: renderItem(item) }, idx))) }));
 }
@@ -226,15 +226,15 @@ function Login({ onLogin }) {
             onLogin();
         }
         else {
-            alert('Nesprávné uživatelské jméno nebo heslo');
+            alert('Incorrect username or password');
         }
     };
-    return (jsxRuntime.jsxs("form", { className: "login-form", onSubmit: handleSubmit, children: [jsxRuntime.jsx("h2", { children: "P\u0159ihl\u00E1\u0161en\u00ED" }), jsxRuntime.jsx(FormField, { id: "username", label: "U\u017Eivatelsk\u00E9 jm\u00E9no", type: "text", value: formData.username, onChange: handleChange, placeholder: "Zadejte u\u017Eivatelsk\u00E9 jm\u00E9no" }), jsxRuntime.jsx(FormField, { id: "password", label: "Heslo", type: "password", value: formData.password, onChange: handleChange, placeholder: "Zadejte heslo" }), jsxRuntime.jsx(Button, { type: "submit", children: "P\u0159ihl\u00E1sit se" })] }));
+    return (jsxRuntime.jsxs("form", { className: "login-form", onSubmit: handleSubmit, children: [jsxRuntime.jsx("h2", { children: "Log in" }), jsxRuntime.jsx(FormField, { id: "username", label: "Username", type: "text", value: formData.username, onChange: handleChange, placeholder: "Enter your username" }), jsxRuntime.jsx(FormField, { id: "password", label: "Password", type: "password", value: formData.password, onChange: handleChange, placeholder: "Enter your password" }), jsxRuntime.jsx(Button, { type: "submit", children: "Log in" })] }));
 }
 
 function NotificationCenter({ notifications, onDismiss }) {
     if (!notifications.length) {
-        return jsxRuntime.jsx("div", { className: "notification-center-empty", children: "\u017D\u00E1dn\u00E9 notifikace" });
+        return jsxRuntime.jsx("div", { className: "notification-center-empty", children: "No notifications" });
     }
     return (jsxRuntime.jsx("div", { className: "notification-center", children: notifications.map(({ id, type, message }) => (jsxRuntime.jsx(Notification, { type: type, message: message, onClose: () => onDismiss(id) }, id))) }));
 }
@@ -254,12 +254,12 @@ function Register({ onRegister }) {
         e.preventDefault();
         const { password, confirmPassword } = formData;
         if (password !== confirmPassword) {
-            alert('Hesla se neshodují');
+            alert('Passwords do not match');
             return;
         }
         onRegister(formData);
     };
-    return (jsxRuntime.jsxs("form", { className: "register-form", onSubmit: handleSubmit, children: [jsxRuntime.jsx("h2", { children: "Registrace" }), jsxRuntime.jsx(FormField, { id: "username", label: "U\u017Eivatelsk\u00E9 jm\u00E9no", type: "text", value: formData.username, onChange: handleChange, placeholder: "Zadejte u\u017Eivatelsk\u00E9 jm\u00E9no" }), jsxRuntime.jsx(FormField, { id: "email", label: "Email", type: "email", value: formData.email, onChange: handleChange, placeholder: "Zadejte email" }), jsxRuntime.jsx(FormField, { id: "password", label: "Heslo", type: "password", value: formData.password, onChange: handleChange, placeholder: "Zadejte heslo" }), jsxRuntime.jsx(FormField, { id: "confirmPassword", label: "Potvr\u010Fte heslo", type: "password", value: formData.confirmPassword, onChange: handleChange, placeholder: "Potvr\u010Fte heslo" }), jsxRuntime.jsx(Button, { type: "submit", children: "Registrovat se" })] }));
+    return (jsxRuntime.jsxs("form", { className: "register-form", onSubmit: handleSubmit, children: [jsxRuntime.jsx("h2", { children: "Create an account" }), jsxRuntime.jsx(FormField, { id: "username", label: "Username", type: "text", value: formData.username, onChange: handleChange, placeholder: "Enter your username" }), jsxRuntime.jsx(FormField, { id: "email", label: "Email", type: "email", value: formData.email, onChange: handleChange, placeholder: "Enter your email" }), jsxRuntime.jsx(FormField, { id: "password", label: "Password", type: "password", value: formData.password, onChange: handleChange, placeholder: "Enter your password" }), jsxRuntime.jsx(FormField, { id: "confirmPassword", label: "Confirm password", type: "password", value: formData.confirmPassword, onChange: handleChange, placeholder: "Confirm your password" }), jsxRuntime.jsx(Button, { type: "submit", children: "Sign up" })] }));
 }
 
 function SearchBar({ onSearch }) {
@@ -276,7 +276,7 @@ function Sidebar({ links }) {
 }
 
 function UserProfile({ user, onEdit, onLogout }) {
-    return (jsxRuntime.jsxs("section", { className: "user-profile", children: [jsxRuntime.jsx(Avatar, { name: user.name, src: user.avatar, size: 80 }), jsxRuntime.jsx("h2", { className: "user-profile__name", children: user.name }), jsxRuntime.jsx("p", { className: "user-profile__email", children: user.email }), jsxRuntime.jsxs("div", { className: "user-profile__actions", children: [jsxRuntime.jsx(Button, { onClick: onEdit, children: "Upravit profil" }), jsxRuntime.jsx(Button, { onClick: onLogout, variant: "secondary", children: "Odhl\u00E1sit se" })] })] }));
+    return (jsxRuntime.jsxs("section", { className: "user-profile", children: [jsxRuntime.jsx(Avatar, { name: user.name, src: user.avatar, size: 80 }), jsxRuntime.jsx("h2", { className: "user-profile__name", children: user.name }), jsxRuntime.jsx("p", { className: "user-profile__email", children: user.email }), jsxRuntime.jsxs("div", { className: "user-profile__actions", children: [jsxRuntime.jsx(Button, { onClick: onEdit, children: "Edit profile" }), jsxRuntime.jsx(Button, { onClick: onLogout, variant: "secondary", children: "Log out" })] })] }));
 }
 
 const AuthLayout = ({ children }) => {
@@ -285,9 +285,9 @@ const AuthLayout = ({ children }) => {
 
 function DashboardLayout({ children, user, onLogout }) {
     const sidebarLinks = [
-        { label: 'Přehled', href: '/dashboard' },
-        { label: 'Úkoly', href: '/tasks' },
-        { label: 'Nastavení', href: '/settings' }
+        { label: 'Overview', href: '/dashboard' },
+        { label: 'Tasks', href: '/tasks' },
+        { label: 'Settings', href: '/settings' }
     ];
     return (jsxRuntime.jsxs("div", { className: "dashboard-layout", children: [jsxRuntime.jsx(Header, { user: user, onLogout: onLogout }), jsxRuntime.jsxs("div", { className: "dashboard-main", children: [jsxRuntime.jsx(Sidebar, { links: sidebarLinks }), jsxRuntime.jsx("main", { className: "dashboard-content", children: children })] }), jsxRuntime.jsx(Footer, {})] }));
 }
@@ -297,15 +297,15 @@ const FormLayout = ({ title, description, children }) => {
 };
 
 const ProfileLayout = ({ user, tabs, children }) => {
-    return (jsxRuntime.jsxs("div", { className: "profile-layout", children: [jsxRuntime.jsxs("div", { className: "profile-header", children: [jsxRuntime.jsx(Avatar, { src: user.avatar, alt: user.name }), jsxRuntime.jsx("h2", { children: user.name }), jsxRuntime.jsx("p", { children: user.email })] }), jsxRuntime.jsx(Tabs, { tabs: tabs }), jsxRuntime.jsx("div", { className: "profile-content", children: children })] }));
+    return (jsxRuntime.jsxs("div", { className: "profile-layout", children: [jsxRuntime.jsxs("div", { className: "profile-header", children: [jsxRuntime.jsx(Avatar, { src: user.avatar, alt: user.name }), jsxRuntime.jsx("h2", { children: user.name }), jsxRuntime.jsx("p", { className: "profile-header__email", children: user.email })] }), jsxRuntime.jsx(Tabs, { tabs: tabs }), jsxRuntime.jsx("div", { className: "profile-content", children: children })] }));
 };
 
 const SettingsLayout = ({ user, onLogout, children }) => {
     const settingsLinks = [
-        { label: 'Profil', href: '/settings/profile' },
-        { label: 'Heslo', href: '/settings/password' },
-        { label: 'Notifikace', href: '/settings/notifications' },
-        { label: 'Předvolby', href: '/settings/preferences' },
+        { label: 'Profile', href: '/settings/profile' },
+        { label: 'Password', href: '/settings/password' },
+        { label: 'Notifications', href: '/settings/notifications' },
+        { label: 'Preferences', href: '/settings/preferences' },
     ];
     return (jsxRuntime.jsxs("div", { className: "settings-layout", children: [jsxRuntime.jsx(Header, { user: user, onLogout: onLogout }), jsxRuntime.jsxs("div", { className: "settings-main", children: [jsxRuntime.jsx(Sidebar, { links: settingsLinks }), jsxRuntime.jsx("div", { className: "settings-content", children: children })] }), jsxRuntime.jsx(Footer, {})] }));
 };

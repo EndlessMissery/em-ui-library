@@ -1,4 +1,5 @@
 import React from 'react';
+import { Heading } from '../../atoms';
 import { Card } from '../../molecules';
 import './Dashboard.css';
 
@@ -16,7 +17,7 @@ export interface DashboardProps {
 function Dashboard({ stats }: DashboardProps) {
   return (
     <section className="dashboard">
-      <h1>Dashboard</h1>
+      <Heading level={1}>Dashboard</Heading>
       <div className="dashboard-cards">
         {stats.map(({ id, title, value, icon }) => (
           <Card key={id} className="dashboard-card">

@@ -11,7 +11,7 @@ export interface RadioButtonProps {
 
 function RadioButton({ name, value, checked, onChange, label }: RadioButtonProps) {
   return (
-    <label style={{ marginRight: '1rem' }}>
+    <label className="radio-button">
       <input
         type="radio"
         name={name}

@@ -1,10 +1,10 @@
 .footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.85rem;
-    color: #666;
-    background-color: #f8f9fa;
-    margin-top: auto;
-    box-shadow: inset 0 1px 0 #ddd;
-  }
-  
+  text-align: center;
+  padding: var(--eui-space-4);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-sm);
+  color: var(--eui-color-text-subtle);
+  background-color: var(--eui-color-surface);
+  border-top: 1px solid var(--eui-color-border);
+  margin-top: auto;
+}

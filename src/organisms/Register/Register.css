@@ -1,33 +1,23 @@
+/*
+ * Deliberately no border/shadow/background/centering here — same reasoning
+ * as Login.css: this composes inside a layout that already owns the card
+ * chrome (FormLayout's .form-layout).
+ */
 .register-form {
-    max-width: 450px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .register-form h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .register-form button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1.1rem;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-form button:hover {
-    background-color: #1e7e34;
-  }
-  
+  max-width: 420px;
+}
+
+.register-form h2 {
+  margin: 0 0 var(--eui-space-6);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xl);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+}
+
+.register-form .btn {
+  width: 100%;
+  margin-top: var(--eui-space-2);
+  padding: var(--eui-space-3);
+  font-size: var(--eui-fs-base);
+}

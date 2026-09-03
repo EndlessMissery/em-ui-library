@@ -84,7 +84,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    await user.click(screen.getByRole('button', { name: 'Zavřít modal' }));
+    await user.click(screen.getByRole('button', { name: 'Close modal' }));
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
@@ -131,7 +131,7 @@ describe('Modal', () => {
 
     await user.click(screen.getByRole('button', { name: 'Open modal' }));
 
-    const closeButton = screen.getByRole('button', { name: 'Zavřít modal' });
+    const closeButton = screen.getByRole('button', { name: 'Close modal' });
     const confirmButton = screen.getByRole('button', { name: 'Confirm' });
     const cancelButton = screen.getByRole('button', { name: 'Cancel' });
 

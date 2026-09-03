@@ -32,7 +32,7 @@ describe('Notification', () => {
     const onClose = vi.fn();
     render(<Notification message="Saved!" onClose={onClose} />);
 
-    await user.click(screen.getByRole('button', { name: 'Zavřít' }));
+    await user.click(screen.getByRole('button', { name: 'Close' }));
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });

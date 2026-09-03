@@ -29,6 +29,7 @@ function Input({
         type={type}
         id={name}
         name={name}
+        className="input"
         value={value}
         placeholder={placeholder}
         onChange={onChange}

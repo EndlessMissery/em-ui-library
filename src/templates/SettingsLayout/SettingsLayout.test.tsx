@@ -12,8 +12,8 @@ describe('SettingsLayout', () => {
       </SettingsLayout>
     );
     expect(screen.getByText('User Admin')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Profil' })).toHaveAttribute('href', '/settings/profile');
-    expect(screen.getByRole('link', { name: 'Heslo' })).toHaveAttribute('href', '/settings/password');
+    expect(screen.getByRole('link', { name: 'Profile' })).toHaveAttribute('href', '/settings/profile');
+    expect(screen.getByRole('link', { name: 'Password' })).toHaveAttribute('href', '/settings/password');
     expect(screen.getByText('Settings content')).toBeInTheDocument();
   });
 });

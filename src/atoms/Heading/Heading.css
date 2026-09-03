@@ -1,6 +1,35 @@
-
 .heading {
-    font-weight: bold;
-    margin: 1rem 0 0.5rem;
-  }
-  
+  font-family: var(--eui-font-sans);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+  line-height: var(--eui-lh-tight);
+  margin: 0 0 var(--eui-space-3);
+  text-wrap: balance;
+}
+
+h1.heading {
+  font-size: var(--eui-fs-3xl);
+  letter-spacing: -0.02em;
+}
+
+h2.heading {
+  font-size: var(--eui-fs-2xl);
+  letter-spacing: -0.015em;
+}
+
+h3.heading {
+  font-size: var(--eui-fs-xl);
+  letter-spacing: -0.01em;
+}
+
+h4.heading {
+  font-size: var(--eui-fs-lg);
+}
+
+h5.heading,
+h6.heading {
+  font-size: var(--eui-fs-base);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--eui-color-text-muted);
+}

@@ -11,8 +11,8 @@ describe('Login', () => {
 
   it('associates each label with its input', () => {
     render(<Login onLogin={() => {}} />);
-    expect(screen.getByLabelText('Uživatelské jméno')).toBeInTheDocument();
-    expect(screen.getByLabelText('Heslo')).toBeInTheDocument();
+    expect(screen.getByLabelText('Username')).toBeInTheDocument();
+    expect(screen.getByLabelText('Password')).toBeInTheDocument();
   });
 
   it('calls onLogin with valid credentials', async () => {
@@ -20,9 +20,9 @@ describe('Login', () => {
     const onLogin = vi.fn();
     render(<Login onLogin={onLogin} />);
 
-    await user.type(screen.getByLabelText('Uživatelské jméno'), 'admin');
-    await user.type(screen.getByLabelText('Heslo'), '1234');
-    await user.click(screen.getByRole('button', { name: 'Přihlásit se' }));
+    await user.type(screen.getByLabelText('Username'), 'admin');
+    await user.type(screen.getByLabelText('Password'), '1234');
+    await user.click(screen.getByRole('button', { name: 'Log in' }));
 
     expect(onLogin).toHaveBeenCalledTimes(1);
   });
@@ -33,12 +33,12 @@ describe('Login', () => {
     const onLogin = vi.fn();
     render(<Login onLogin={onLogin} />);
 
-    await user.type(screen.getByLabelText('Uživatelské jméno'), 'wrong');
-    await user.type(screen.getByLabelText('Heslo'), 'wrong');
-    await user.click(screen.getByRole('button', { name: 'Přihlásit se' }));
+    await user.type(screen.getByLabelText('Username'), 'wrong');
+    await user.type(screen.getByLabelText('Password'), 'wrong');
+    await user.click(screen.getByRole('button', { name: 'Log in' }));
 
     expect(onLogin).not.toHaveBeenCalled();
-    expect(alertSpy).toHaveBeenCalledWith('Nesprávné uživatelské jméno nebo heslo');
+    expect(alertSpy).toHaveBeenCalledWith('Incorrect username or password');
   });
 
   it('has no accessibility violations', async () => {

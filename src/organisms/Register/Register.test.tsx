@@ -11,10 +11,10 @@ describe('Register', () => {
 
   it('associates each label with its input', () => {
     render(<Register onRegister={() => {}} />);
-    expect(screen.getByLabelText('Uživatelské jméno')).toBeInTheDocument();
+    expect(screen.getByLabelText('Username')).toBeInTheDocument();
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
-    expect(screen.getByLabelText('Heslo')).toBeInTheDocument();
-    expect(screen.getByLabelText('Potvrďte heslo')).toBeInTheDocument();
+    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText('Confirm password')).toBeInTheDocument();
   });
 
   it('calls onRegister with the form data when passwords match', async () => {
@@ -22,11 +22,11 @@ describe('Register', () => {
     const onRegister = vi.fn();
     render(<Register onRegister={onRegister} />);
 
-    await user.type(screen.getByLabelText('Uživatelské jméno'), 'user');
+    await user.type(screen.getByLabelText('Username'), 'user');
     await user.type(screen.getByLabelText('Email'), 'user@example.com');
-    await user.type(screen.getByLabelText('Heslo'), 'secret');
-    await user.type(screen.getByLabelText('Potvrďte heslo'), 'secret');
-    await user.click(screen.getByRole('button', { name: 'Registrovat se' }));
+    await user.type(screen.getByLabelText('Password'), 'secret');
+    await user.type(screen.getByLabelText('Confirm password'), 'secret');
+    await user.click(screen.getByRole('button', { name: 'Sign up' }));
 
     expect(onRegister).toHaveBeenCalledWith({
       username: 'user',
@@ -42,12 +42,12 @@ describe('Register', () => {
     const onRegister = vi.fn();
     render(<Register onRegister={onRegister} />);
 
-    await user.type(screen.getByLabelText('Heslo'), 'secret');
-    await user.type(screen.getByLabelText('Potvrďte heslo'), 'different');
-    await user.click(screen.getByRole('button', { name: 'Registrovat se' }));
+    await user.type(screen.getByLabelText('Password'), 'secret');
+    await user.type(screen.getByLabelText('Confirm password'), 'different');
+    await user.click(screen.getByRole('button', { name: 'Sign up' }));
 
     expect(onRegister).not.toHaveBeenCalled();
-    expect(alertSpy).toHaveBeenCalledWith('Hesla se neshodují');
+    expect(alertSpy).toHaveBeenCalledWith('Passwords do not match');
   });
 
   it('has no accessibility violations', async () => {

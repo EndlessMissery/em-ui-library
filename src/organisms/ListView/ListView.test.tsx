@@ -5,7 +5,7 @@ import ListView from './ListView';
 describe('ListView', () => {
   it('shows an empty state when there are no items', () => {
     render(<ListView items={[]} renderItem={(item: string) => item} />);
-    expect(screen.getByText('Žádné položky')).toBeInTheDocument();
+    expect(screen.getByText('No items')).toBeInTheDocument();
   });
 
   it('renders each item via renderItem', () => {

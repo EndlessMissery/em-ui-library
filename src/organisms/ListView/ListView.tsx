@@ -8,7 +8,7 @@ export interface ListViewProps<T> {
 
 function ListView<T>({ items, renderItem }: ListViewProps<T>) {
   if (!items || items.length === 0) {
-    return <div className="listview-empty">Žádné položky</div>;
+    return <div className="listview-empty">No items</div>;
   }
 
   return (

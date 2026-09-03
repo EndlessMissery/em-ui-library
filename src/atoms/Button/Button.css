@@ -1,23 +1,75 @@
 .btn {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
-  
-  .btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--eui-space-2);
+  padding: var(--eui-space-2) var(--eui-space-4);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  font-weight: var(--eui-fw-medium);
+  line-height: var(--eui-lh-tight);
+  border-radius: var(--eui-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--eui-duration-base) var(--eui-ease),
+    border-color var(--eui-duration-base) var(--eui-ease),
+    color var(--eui-duration-base) var(--eui-ease),
+    transform var(--eui-duration-fast) var(--eui-ease),
+    box-shadow var(--eui-duration-fast) var(--eui-ease);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--eui-shadow-focus);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.btn-primary {
+  background-color: var(--eui-color-accent);
+  color: var(--eui-color-text-on-accent);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--eui-color-accent-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  background-color: var(--eui-color-accent-active);
+}
+
+.btn-secondary {
+  background-color: var(--eui-color-surface-raised);
+  border-color: var(--eui-color-border-strong);
+  color: var(--eui-color-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--eui-color-neutral-subtle);
+  border-color: var(--eui-color-text-subtle);
+}
+
+.btn-danger {
+  background-color: var(--eui-color-danger);
+  color: var(--eui-color-text-on-accent);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--eui-color-danger-hover);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--eui-color-accent);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--eui-color-accent-subtle);
+}

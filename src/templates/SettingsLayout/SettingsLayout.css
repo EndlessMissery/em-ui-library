@@ -1,18 +1,18 @@
 .settings-layout {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .settings-main {
-    display: flex;
-    flex: 1;
-    background-color: #fafafa;
-  }
-  
-  .settings-content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: var(--eui-color-bg);
+}
+
+.settings-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.settings-content {
+  flex: 1;
+  padding: var(--eui-space-8);
+  overflow-y: auto;
+}

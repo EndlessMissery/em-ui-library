@@ -1,13 +1,12 @@
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 
-// Entry is .tsx while migration is in progress, mixed with legacy .jsx files.
-// @rollup/plugin-typescript only picks up .ts/.tsx; babel keeps handling
-// the remaining .js/.jsx files, so both coexist without double-processing.
+// src/ is fully TypeScript now (migrated off .js/.jsx), so
+// @rollup/plugin-typescript alone handles compilation and the JSX
+// transform (tsconfig "jsx": "react-jsx") — no babel needed anymore.
 export default {
   input: "src/index.ts",
   output: [
@@ -23,7 +22,7 @@ export default {
   plugins: [
     peerDepsExternal(),
     resolve({
-      extensions: [".js", ".jsx", ".ts", ".tsx"]
+      extensions: [".ts", ".tsx"]
     }),
     commonjs(),
     typescript({
@@ -31,11 +30,6 @@ export default {
       declaration: false,
       outDir: "dist",
       exclude: ["**/*.test.*", "**/*.stories.*"]
-    }),
-    babel({
-      exclude: "node_modules/**",
-      babelHelpers: "bundled",
-      extensions: [".js", ".jsx"],
     }),
     postcss({
       extract: true,

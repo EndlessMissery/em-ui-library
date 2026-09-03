@@ -1,18 +1,25 @@
 .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin: 1rem 0;
-  }
-  
-  .card-title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-  }
-  
-  .card-content {
-    font-size: 1rem;
-  }
-  
+  border: 1px solid var(--eui-color-border);
+  border-radius: var(--eui-radius-lg);
+  padding: var(--eui-space-5);
+  background: var(--eui-color-surface-raised);
+  box-shadow: var(--eui-shadow-sm);
+  margin: var(--eui-space-4) 0;
+  transition: box-shadow var(--eui-duration-base) var(--eui-ease),
+    border-color var(--eui-duration-base) var(--eui-ease);
+}
+
+.card-title {
+  margin: 0 0 var(--eui-space-2);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-lg);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+}
+
+.card-content {
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  color: var(--eui-color-text-muted);
+  line-height: var(--eui-lh-relaxed);
+}

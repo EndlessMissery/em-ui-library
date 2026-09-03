@@ -8,7 +8,7 @@ export interface HeadingProps {
 
 function Heading({ level = 1, children }: HeadingProps) {
   const Tag = `h${level}` as React.ElementType;
-  return <Tag>{children}</Tag>;
+  return <Tag className="heading">{children}</Tag>;
 }
 
 export default Heading;

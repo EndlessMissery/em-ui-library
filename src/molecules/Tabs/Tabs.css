@@ -1,27 +1,47 @@
 .tabs-nav {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .tabs-nav-button {
-    background: none;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-weight: 600;
-    border-bottom: 2px solid transparent;
-  }
-  
-  .tabs-nav-button.active {
-    border-color: #007bff;
-    color: #007bff;
-  }
-  
-  .tabs-nav-button:hover:not(.active) {
-    background-color: #f0f0f0;
-  }
-  
-  .tabs-content {
-    padding: 1rem 0;
-  }
-  
+  display: flex;
+  gap: var(--eui-space-2);
+  border-bottom: 1px solid var(--eui-color-border);
+}
+
+.tabs-nav-button {
+  background: none;
+  border: none;
+  padding: var(--eui-space-3) var(--eui-space-3);
+  margin-bottom: -1px;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  font-weight: var(--eui-fw-medium);
+  color: var(--eui-color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--eui-duration-base) var(--eui-ease),
+    border-color var(--eui-duration-base) var(--eui-ease);
+}
+
+.tabs-nav-button.active {
+  border-color: var(--eui-color-accent);
+  color: var(--eui-color-accent);
+}
+
+.tabs-nav-button:hover:not(.active) {
+  color: var(--eui-color-text);
+}
+
+.tabs-nav-button:focus-visible {
+  outline: none;
+  border-radius: var(--eui-radius-sm) var(--eui-radius-sm) 0 0;
+  box-shadow: var(--eui-shadow-focus);
+}
+
+.tabs-content {
+  padding: var(--eui-space-4) 0;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  color: var(--eui-color-text-muted);
+  line-height: var(--eui-lh-relaxed);
+}
+
+.tabs-content:focus-visible {
+  outline: none;
+}

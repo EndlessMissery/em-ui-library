@@ -1,17 +1,18 @@
 .avatar {
-    border-radius: 50%;
-    object-fit: cover;
-    display: inline-block;
-  }
-  
-  .avatar--placeholder {
-    background-color: #ccc;
-    color: #555;
-    font-weight: bold;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-  }
-  
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+  box-shadow: 0 0 0 1px var(--eui-color-border);
+}
+
+.avatar--placeholder {
+  background-color: var(--eui-color-accent-subtle);
+  color: var(--eui-color-accent-active);
+  font-family: var(--eui-font-sans);
+  font-weight: var(--eui-fw-semibold);
+  font-size: var(--eui-fs-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}

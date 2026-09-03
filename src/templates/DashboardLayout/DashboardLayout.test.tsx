@@ -13,8 +13,8 @@ describe('DashboardLayout', () => {
       </DashboardLayout>
     );
     expect(screen.getByText('User Admin')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Přehled' })).toHaveAttribute('href', '/dashboard');
-    expect(screen.getByRole('link', { name: 'Úkoly' })).toHaveAttribute('href', '/tasks');
+    expect(screen.getByRole('link', { name: 'Overview' })).toHaveAttribute('href', '/dashboard');
+    expect(screen.getByRole('link', { name: 'Tasks' })).toHaveAttribute('href', '/tasks');
     expect(screen.getByText('Page content')).toBeInTheDocument();
     expect(screen.getByText(new RegExp(new Date().getFullYear().toString()))).toBeInTheDocument();
   });
@@ -28,7 +28,7 @@ describe('DashboardLayout', () => {
       </DashboardLayout>
     );
 
-    await userEventInstance.click(screen.getByRole('button', { name: 'Odhlásit se' }));
+    await userEventInstance.click(screen.getByRole('button', { name: 'Log out' }));
 
     expect(onLogout).toHaveBeenCalledTimes(1);
   });

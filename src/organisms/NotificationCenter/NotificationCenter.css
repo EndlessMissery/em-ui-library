@@ -1,15 +1,15 @@
 .notification-center {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    max-width: 400px;
-    margin: 1rem auto;
-  }
-  
-  .notification-center-empty {
-    color: #777;
-    font-style: italic;
-    text-align: center;
-    margin: 1rem 0;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: var(--eui-space-2);
+  max-width: 400px;
+  margin: var(--eui-space-4) auto;
+}
+
+.notification-center-empty {
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  color: var(--eui-color-text-subtle);
+  text-align: center;
+  margin: var(--eui-space-4) 0;
+}

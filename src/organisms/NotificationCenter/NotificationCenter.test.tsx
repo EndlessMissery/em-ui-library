@@ -6,7 +6,7 @@ import NotificationCenter from './NotificationCenter';
 describe('NotificationCenter', () => {
   it('shows an empty state when there are no notifications', () => {
     render(<NotificationCenter notifications={[]} onDismiss={() => {}} />);
-    expect(screen.getByText('Žádné notifikace')).toBeInTheDocument();
+    expect(screen.getByText('No notifications')).toBeInTheDocument();
   });
 
   it('renders each notification message', () => {

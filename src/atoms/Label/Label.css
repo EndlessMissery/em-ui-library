@@ -1,6 +1,8 @@
 .label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  
+  display: block;
+  margin-bottom: var(--eui-space-2);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-sm);
+  font-weight: var(--eui-fw-medium);
+  color: var(--eui-color-text-muted);
+}

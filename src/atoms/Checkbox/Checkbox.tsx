@@ -11,7 +11,7 @@ export interface CheckboxProps {
 
 function Checkbox({ id, name, checked, onChange, label }: CheckboxProps) {
   return (
-    <div style={{ marginBottom: '0.5rem' }}>
+    <div className="checkbox-wrapper">
       <input
         type="checkbox"
         id={id}
@@ -19,7 +19,7 @@ function Checkbox({ id, name, checked, onChange, label }: CheckboxProps) {
         checked={checked}
         onChange={onChange}
       />
-      <label htmlFor={id} style={{ marginLeft: '0.5rem' }}>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }

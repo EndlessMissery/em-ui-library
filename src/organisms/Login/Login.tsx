@@ -29,30 +29,30 @@ function Login({ onLogin }: LoginProps) {
     if (username === 'admin' && password === '1234') {
       onLogin();
     } else {
-      alert('Nesprávné uživatelské jméno nebo heslo');
+      alert('Incorrect username or password');
     }
   };
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Přihlášení</h2>
+      <h2>Log in</h2>
       <FormField
         id="username"
-        label="Uživatelské jméno"
+        label="Username"
         type="text"
         value={formData.username}
         onChange={handleChange}
-        placeholder="Zadejte uživatelské jméno"
+        placeholder="Enter your username"
       />
       <FormField
         id="password"
-        label="Heslo"
+        label="Password"
         type="password"
         value={formData.password}
         onChange={handleChange}
-        placeholder="Zadejte heslo"
+        placeholder="Enter your password"
       />
-      <Button type="submit">Přihlásit se</Button>
+      <Button type="submit">Log in</Button>
     </form>
   );
 }

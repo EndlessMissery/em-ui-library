@@ -11,12 +11,12 @@ describe('Spinner', () => {
 
   it('exposes a status role so screen readers announce the loading state', () => {
     render(<Spinner />);
-    expect(screen.getByRole('status')).toHaveAccessibleName('Načítání');
+    expect(screen.getByRole('status')).toHaveAccessibleName('Loading');
   });
 
   it('accepts a custom accessible label', () => {
-    render(<Spinner aria-label="Ukládám změny" />);
-    expect(screen.getByRole('status')).toHaveAccessibleName('Ukládám změny');
+    render(<Spinner aria-label="Saving changes" />);
+    expect(screen.getByRole('status')).toHaveAccessibleName('Saving changes');
   });
 
   it('has no accessibility violations', async () => {

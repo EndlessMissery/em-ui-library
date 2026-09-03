@@ -67,7 +67,7 @@ function Modal({ isOpen, onClose, title, children }: ModalProps) {
       >
         <header className="modal-header">
           <h2 id={titleId}>{title}</h2>
-          <button className="modal-close" onClick={onClose} aria-label="Zavřít modal">&times;</button>
+          <button className="modal-close" onClick={onClose} aria-label="Close modal">&times;</button>
         </header>
         <div className="modal-body">{children}</div>
       </div>

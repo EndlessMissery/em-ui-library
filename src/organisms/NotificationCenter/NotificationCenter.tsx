@@ -15,7 +15,7 @@ export interface NotificationCenterProps {
 
 function NotificationCenter({ notifications, onDismiss }: NotificationCenterProps) {
   if (!notifications.length) {
-    return <div className="notification-center-empty">Žádné notifikace</div>;
+    return <div className="notification-center-empty">No notifications</div>;
   }
 
   return (

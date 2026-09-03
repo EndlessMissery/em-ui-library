@@ -15,7 +15,7 @@ function Notification({ message, type = 'success', onClose }: NotificationProps)
   return (
     <div className={`notification ${type}`}>
       <span>{message}</span>
-      <button onClick={onClose} aria-label="Zavřít">×</button>
+      <button onClick={onClose} aria-label="Close">×</button>
     </div>
   );
 }

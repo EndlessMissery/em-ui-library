@@ -1,33 +1,25 @@
+/*
+ * Deliberately no border/shadow/background/centering here — Login is meant
+ * to be composed inside a layout that already provides the card chrome
+ * (AuthLayout's .auth-box, FormLayout's .form-layout). Giving it its own
+ * competing card produces a card-in-a-card look; when placed standalone it
+ * still reads fine as a plain left-aligned block.
+ */
 .login-form {
-    max-width: 400px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .login-form h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .login-form button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1.1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-form button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 420px;
+}
+
+.login-form h2 {
+  margin: 0 0 var(--eui-space-6);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xl);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+}
+
+.login-form .btn {
+  width: 100%;
+  margin-top: var(--eui-space-2);
+  padding: var(--eui-space-3);
+  font-size: var(--eui-fs-base);
+}

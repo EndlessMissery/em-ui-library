@@ -22,8 +22,8 @@ function UserProfile({ user, onEdit, onLogout }: UserProfileProps) {
       <h2 className="user-profile__name">{user.name}</h2>
       <p className="user-profile__email">{user.email}</p>
       <div className="user-profile__actions">
-        <Button onClick={onEdit}>Upravit profil</Button>
-        <Button onClick={onLogout} variant="secondary">Odhlásit se</Button>
+        <Button onClick={onEdit}>Edit profile</Button>
+        <Button onClick={onLogout} variant="secondary">Log out</Button>
       </div>
     </section>
   );

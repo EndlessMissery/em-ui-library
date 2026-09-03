@@ -1,27 +1,41 @@
 .badge {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    color: white;
-    user-select: none;
-  }
-  
-  .badge--primary {
-    background-color: #007bff;
-  }
-  
-  .badge--success {
-    background-color: #28a745;
-  }
-  
-  .badge--warning {
-    background-color: #ffc107;
-    color: black;
-  }
-  
-  .badge--danger {
-    background-color: #dc3545;
-  }
-  
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem var(--eui-space-3);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xs);
+  font-weight: var(--eui-fw-semibold);
+  border-radius: var(--eui-radius-full);
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.badge--primary {
+  background-color: var(--eui-color-accent-subtle);
+  border-color: var(--eui-color-accent-border);
+  color: var(--eui-color-accent-active);
+}
+
+.badge--secondary {
+  background-color: var(--eui-color-neutral-subtle);
+  border-color: var(--eui-color-neutral-border);
+  color: var(--eui-color-neutral);
+}
+
+.badge--success {
+  background-color: var(--eui-color-success-subtle);
+  border-color: var(--eui-color-success-border);
+  color: var(--eui-color-success);
+}
+
+.badge--warning {
+  background-color: var(--eui-color-warning-subtle);
+  border-color: var(--eui-color-warning-border);
+  color: var(--eui-color-warning);
+}
+
+.badge--danger {
+  background-color: var(--eui-color-danger-subtle);
+  border-color: var(--eui-color-danger-border);
+  color: var(--eui-color-danger);
+}

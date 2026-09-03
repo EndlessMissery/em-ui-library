@@ -1,32 +1,46 @@
 .tooltip-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: help;
+  position: relative;
+  display: inline-block;
+  border-radius: var(--eui-radius-sm);
+}
+
+.tooltip-wrapper:focus-visible {
+  outline: none;
+  box-shadow: var(--eui-shadow-focus);
+}
+
+.tooltip-box {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--eui-color-text);
+  color: var(--eui-color-bg);
+  padding: var(--eui-space-2) var(--eui-space-3);
+  border-radius: var(--eui-radius-sm);
+  white-space: nowrap;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xs);
+  font-weight: var(--eui-fw-medium);
+  box-shadow: var(--eui-shadow-md);
+  z-index: 10;
+  animation: eui-fade-in var(--eui-duration-fast) var(--eui-ease);
+}
+
+.tooltip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--eui-color-text) transparent transparent transparent;
+}
+
+@keyframes eui-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(2px);
   }
-  
-  .tooltip-box {
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: white;
-    padding: 0.4rem 0.6rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    font-size: 0.75rem;
-    z-index: 10;
-    opacity: 0.9;
-  }
-  
-  .tooltip-box::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-  }
-  
+}

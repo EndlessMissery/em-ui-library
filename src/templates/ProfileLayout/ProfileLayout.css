@@ -1,22 +1,33 @@
 .profile-layout {
-    max-width: 900px;
-    margin: 3rem auto;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  }
-  
-  .profile-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .profile-header h2 {
-    margin: 0.5rem 0 0;
-  }
-  
-  .profile-content {
-    margin-top: 2rem;
-  }
-  
+  max-width: 900px;
+  margin: var(--eui-space-12) auto;
+  background-color: var(--eui-color-surface-raised);
+  padding: var(--eui-space-8);
+  border: 1px solid var(--eui-color-border);
+  border-radius: var(--eui-radius-xl);
+  box-shadow: var(--eui-shadow-md);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: var(--eui-space-8);
+}
+
+.profile-header h2 {
+  margin: var(--eui-space-3) 0 0;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xl);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+}
+
+.profile-header__email {
+  margin: var(--eui-space-1) 0 0;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-sm);
+  color: var(--eui-color-text-muted);
+}
+
+.profile-content {
+  margin-top: var(--eui-space-8);
+}

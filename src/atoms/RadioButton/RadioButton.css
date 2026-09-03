@@ -1,10 +1,22 @@
 .radio-button {
-    margin-right: 1rem;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .radio-button input[type="radio"] {
-    margin-right: 0.4rem;
-  }
-  
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eui-space-2);
+  margin-right: var(--eui-space-4);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  color: var(--eui-color-text);
+  cursor: pointer;
+}
+
+.radio-button input[type='radio'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--eui-color-accent);
+  cursor: pointer;
+}
+
+.radio-button input[type='radio']:focus-visible {
+  outline: 2px solid var(--eui-color-accent);
+  outline-offset: 2px;
+}

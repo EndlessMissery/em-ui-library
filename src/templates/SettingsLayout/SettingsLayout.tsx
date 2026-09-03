@@ -12,10 +12,10 @@ export interface SettingsLayoutProps {
 
 const SettingsLayout = ({ user, onLogout, children }: SettingsLayoutProps) => {
   const settingsLinks = [
-    { label: 'Profil', href: '/settings/profile' },
-    { label: 'Heslo', href: '/settings/password' },
-    { label: 'Notifikace', href: '/settings/notifications' },
-    { label: 'Předvolby', href: '/settings/preferences' },
+    { label: 'Profile', href: '/settings/profile' },
+    { label: 'Password', href: '/settings/password' },
+    { label: 'Notifications', href: '/settings/notifications' },
+    { label: 'Preferences', href: '/settings/preferences' },
   ];
 
   return (

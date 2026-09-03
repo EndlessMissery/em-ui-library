@@ -1,5 +1,4 @@
 .button-group {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
+  display: flex;
+  gap: var(--eui-space-3);
+}

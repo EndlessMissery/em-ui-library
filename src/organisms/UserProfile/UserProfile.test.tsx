@@ -19,8 +19,8 @@ describe('UserProfile', () => {
     const onLogout = vi.fn();
     render(<UserProfile user={user} onEdit={onEdit} onLogout={onLogout} />);
 
-    await userEventInstance.click(screen.getByRole('button', { name: 'Upravit profil' }));
-    await userEventInstance.click(screen.getByRole('button', { name: 'Odhlásit se' }));
+    await userEventInstance.click(screen.getByRole('button', { name: 'Edit profile' }));
+    await userEventInstance.click(screen.getByRole('button', { name: 'Log out' }));
 
     expect(onEdit).toHaveBeenCalledTimes(1);
     expect(onLogout).toHaveBeenCalledTimes(1);

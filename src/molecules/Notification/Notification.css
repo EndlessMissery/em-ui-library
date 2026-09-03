@@ -1,26 +1,74 @@
 .notification {
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--eui-space-4);
+  padding: var(--eui-space-3) var(--eui-space-4);
+  margin: var(--eui-space-2) 0;
+  border-radius: var(--eui-radius-md);
+  border: 1px solid transparent;
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-base);
+  animation: eui-fade-in var(--eui-duration-base) var(--eui-ease);
+}
+
+.notification.success {
+  background-color: var(--eui-color-success-subtle);
+  border-color: var(--eui-color-success-border);
+  color: var(--eui-color-success);
+}
+
+.notification.error {
+  background-color: var(--eui-color-danger-subtle);
+  border-color: var(--eui-color-danger-border);
+  color: var(--eui-color-danger);
+}
+
+.notification.warning {
+  background-color: var(--eui-color-warning-subtle);
+  border-color: var(--eui-color-warning-border);
+  color: var(--eui-color-warning);
+}
+
+.notification.info {
+  background-color: var(--eui-color-info-subtle);
+  border-color: var(--eui-color-info-border);
+  color: var(--eui-color-info);
+}
+
+.notification button {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--eui-radius-sm);
+  font-size: var(--eui-fs-lg);
+  line-height: 1;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity var(--eui-duration-fast) var(--eui-ease),
+    background-color var(--eui-duration-fast) var(--eui-ease);
+}
+
+.notification button:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.notification button:focus-visible {
+  outline: none;
+  opacity: 1;
+  box-shadow: var(--eui-shadow-focus);
+}
+
+@keyframes eui-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
   }
-  
-  .notification.success {
-    background-color: #4caf50;
-  }
-  
-  .notification.error {
-    background-color: #f44336;
-  }
-  
-  .notification button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: white;
-    cursor: pointer;
-  }
-  
+}

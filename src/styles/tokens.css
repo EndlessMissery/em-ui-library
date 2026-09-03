@@ -1,0 +1,102 @@
+/**
+ * em-ui-library design tokens.
+ *
+ * A single, cohesive palette/scale so every component draws from the same
+ * source instead of hardcoding its own colors, spacing, and shadows. Ships
+ * as part of the bundle (imported once from src/index.ts) so consumers get
+ * these custom properties automatically; override any of them from your own
+ * app CSS to re-theme the whole library.
+ */
+
+:root {
+  /* Color — warm neutral scale + one desaturated accent */
+  --eui-color-bg: #ffffff;
+  --eui-color-surface: #faf9f7;
+  --eui-color-surface-raised: #ffffff;
+  --eui-color-border: #e5e1dc;
+  --eui-color-border-strong: #d3cdc4;
+
+  --eui-color-text: #221f1a;
+  --eui-color-text-muted: #6b6459;
+  --eui-color-text-subtle: #9c9488;
+  --eui-color-text-on-accent: #ffffff;
+
+  --eui-color-accent: #5b5bd6;
+  --eui-color-accent-hover: #4c4cc2;
+  --eui-color-accent-active: #4141a8;
+  --eui-color-accent-subtle: #eeeefb;
+  --eui-color-accent-border: #c7c7f0;
+
+  --eui-color-danger: #c4392b;
+  --eui-color-danger-hover: #ab2f22;
+  --eui-color-danger-subtle: #fbeeec;
+  --eui-color-danger-border: #f0c6c0;
+
+  --eui-color-success: #2f7d4f;
+  --eui-color-success-subtle: #eaf5ee;
+  --eui-color-success-border: #c3e2cf;
+
+  --eui-color-warning: #a15a12;
+  --eui-color-warning-subtle: #fbf1e6;
+  --eui-color-warning-border: #edd3ae;
+
+  --eui-color-info: #2b6f8f;
+  --eui-color-info-subtle: #eaf4f8;
+  --eui-color-info-border: #c1dfe9;
+
+  --eui-color-neutral: #575049;
+  --eui-color-neutral-subtle: #f1efeb;
+  --eui-color-neutral-border: #ddd7cd;
+
+  /* Typography */
+  --eui-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --eui-font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  --eui-fs-xs: 0.75rem;
+  --eui-fs-sm: 0.8125rem;
+  --eui-fs-base: 0.9375rem;
+  --eui-fs-md: 1rem;
+  --eui-fs-lg: 1.0625rem;
+  --eui-fs-xl: 1.25rem;
+  --eui-fs-2xl: 1.5rem;
+  --eui-fs-3xl: 1.875rem;
+
+  --eui-fw-regular: 400;
+  --eui-fw-medium: 500;
+  --eui-fw-semibold: 600;
+  --eui-fw-bold: 700;
+
+  --eui-lh-tight: 1.25;
+  --eui-lh-normal: 1.5;
+  --eui-lh-relaxed: 1.65;
+
+  /* Spacing */
+  --eui-space-1: 0.25rem;
+  --eui-space-2: 0.5rem;
+  --eui-space-3: 0.75rem;
+  --eui-space-4: 1rem;
+  --eui-space-5: 1.25rem;
+  --eui-space-6: 1.5rem;
+  --eui-space-8: 2rem;
+  --eui-space-10: 2.5rem;
+  --eui-space-12: 3rem;
+
+  /* Radius — tighter on inner controls, softer on containers */
+  --eui-radius-sm: 6px;
+  --eui-radius-md: 8px;
+  --eui-radius-lg: 12px;
+  --eui-radius-xl: 16px;
+  --eui-radius-full: 999px;
+
+  /* Shadow — tinted with the text color, never pure black */
+  --eui-shadow-sm: 0 1px 2px rgba(34, 31, 26, 0.06);
+  --eui-shadow-md: 0 6px 16px -4px rgba(34, 31, 26, 0.12), 0 2px 4px -2px rgba(34, 31, 26, 0.06);
+  --eui-shadow-lg: 0 16px 40px -8px rgba(34, 31, 26, 0.18), 0 4px 8px -2px rgba(34, 31, 26, 0.08);
+  --eui-shadow-focus: 0 0 0 3px var(--eui-color-accent-subtle), 0 0 0 1px var(--eui-color-accent);
+
+  /* Motion */
+  --eui-ease: cubic-bezier(0.2, 0, 0, 1);
+  --eui-duration-fast: 120ms;
+  --eui-duration-base: 180ms;
+}

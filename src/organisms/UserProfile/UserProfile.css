@@ -1,22 +1,29 @@
 .user-profile {
-    text-align: center;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-  
-  .user-profile__name {
-    margin: 0.5rem 0 0.25rem;
-  }
-  
-  .user-profile__email {
-    margin: 0 0 1rem;
-    color: #555;
-    font-size: 0.9rem;
-  }
-  
-  .user-profile__actions > button {
-    margin: 0 0.5rem;
-  }
-  
+  text-align: center;
+  padding: var(--eui-space-6);
+  background-color: var(--eui-color-surface-raised);
+  border: 1px solid var(--eui-color-border);
+  border-radius: var(--eui-radius-lg);
+  box-shadow: var(--eui-shadow-sm);
+}
+
+.user-profile__name {
+  margin: var(--eui-space-3) 0 var(--eui-space-1);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-xl);
+  font-weight: var(--eui-fw-semibold);
+  color: var(--eui-color-text);
+}
+
+.user-profile__email {
+  margin: 0 0 var(--eui-space-5);
+  font-family: var(--eui-font-sans);
+  font-size: var(--eui-fs-sm);
+  color: var(--eui-color-text-muted);
+}
+
+.user-profile__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--eui-space-3);
+}

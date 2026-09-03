@@ -18,7 +18,7 @@ describe('Header', () => {
     const onLogout = vi.fn();
     render(<Header user={user} onLogout={onLogout} />);
 
-    await userEventInstance.click(screen.getByRole('button', { name: 'Odhlásit se' }));
+    await userEventInstance.click(screen.getByRole('button', { name: 'Log out' }));
 
     expect(onLogout).toHaveBeenCalledTimes(1);
   });

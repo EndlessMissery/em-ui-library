@@ -31,7 +31,7 @@ function Register({ onRegister }: RegisterProps) {
     e.preventDefault();
     const { password, confirmPassword } = formData;
     if (password !== confirmPassword) {
-      alert('Hesla se neshodují');
+      alert('Passwords do not match');
       return;
     }
 
@@ -40,14 +40,14 @@ function Register({ onRegister }: RegisterProps) {
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
-      <h2>Registrace</h2>
+      <h2>Create an account</h2>
       <FormField
         id="username"
-        label="Uživatelské jméno"
+        label="Username"
         type="text"
         value={formData.username}
         onChange={handleChange}
-        placeholder="Zadejte uživatelské jméno"
+        placeholder="Enter your username"
       />
       <FormField
         id="email"
@@ -55,25 +55,25 @@ function Register({ onRegister }: RegisterProps) {
         type="email"
         value={formData.email}
         onChange={handleChange}
-        placeholder="Zadejte email"
+        placeholder="Enter your email"
       />
       <FormField
         id="password"
-        label="Heslo"
+        label="Password"
         type="password"
         value={formData.password}
         onChange={handleChange}
-        placeholder="Zadejte heslo"
+        placeholder="Enter your password"
       />
       <FormField
         id="confirmPassword"
-        label="Potvrďte heslo"
+        label="Confirm password"
         type="password"
         value={formData.confirmPassword}
         onChange={handleChange}
-        placeholder="Potvrďte heslo"
+        placeholder="Confirm your password"
       />
-      <Button type="submit">Registrovat se</Button>
+      <Button type="submit">Sign up</Button>
     </form>
   );
 }

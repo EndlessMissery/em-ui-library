@@ -12,9 +12,9 @@ export interface DashboardLayoutProps {
 
 function DashboardLayout({ children, user, onLogout }: DashboardLayoutProps) {
   const sidebarLinks = [
-    { label: 'Přehled', href: '/dashboard' },
-    { label: 'Úkoly', href: '/tasks' },
-    { label: 'Nastavení', href: '/settings' }
+    { label: 'Overview', href: '/dashboard' },
+    { label: 'Tasks', href: '/tasks' },
+    { label: 'Settings', href: '/settings' }
   ];
 
   return (

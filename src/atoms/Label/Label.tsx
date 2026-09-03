@@ -8,7 +8,7 @@ export interface LabelProps {
 
 function Label({ htmlFor, children }: LabelProps) {
   return (
-    <label htmlFor={htmlFor} style={{ display: 'block', marginBottom: '0.5rem' }}>
+    <label htmlFor={htmlFor} className="label">
       {children}
     </label>
   );
