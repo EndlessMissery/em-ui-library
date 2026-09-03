@@ -22,11 +22,11 @@ A reusable React component library built with Atomic Design — TypeScript, test
 
 | Modal | Tabs | Accordion |
 | --- | --- | --- |
-| ![Modal component with focus trap and Escape-to-close](docs/media/modal.gif) | ![Tabs switching between panels with arrow-key navigation](docs/media/tabs.gif) | ![Accordion expanding and collapsing panels](docs/media/accordion.gif) |
+| ![Modal component with focus trap and Escape-to-close](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/modal.gif) | ![Tabs switching between panels with arrow-key navigation](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/tabs.gif) | ![Accordion expanding and collapsing panels](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/accordion.gif) |
 
 | Tooltip | Notification | Login |
 | --- | --- | --- |
-| ![Tooltip appearing on hover with an aria-describedby link](docs/media/tooltip.gif) | ![Notifications being dismissed one by one](docs/media/notification.gif) | ![Login form being filled in and submitted](docs/media/login.gif) |
+| ![Tooltip appearing on hover with an aria-describedby link](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/tooltip.gif) | ![Notifications being dismissed one by one](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/notification.gif) | ![Login form being filled in and submitted](https://raw.githubusercontent.com/EndlessMissery/em-ui-library/main/docs/media/login.gif) |
 
 More at the **[Storybook live demo](https://endlessmissery.github.io/em-ui-library/)**.
 
