@@ -21,5 +21,9 @@
     "noUnusedParameters": false
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  // The " [0-9].ext" patterns exclude iCloud Drive "conflicted copy" files —
+  // this repo lives under ~/Documents, which iCloud actively re-syncs, and
+  // it recreates these duplicates faster than they can be deleted by hand.
+  // See .gitignore for the same protection on the git side.
+  "exclude": ["node_modules", "dist", "**/* *.ts", "**/* *.tsx"]
 }

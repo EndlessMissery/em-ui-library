@@ -5,3 +5,11 @@ coverage/
 
 *storybook.log
 storybook-static
+
+# This project lives under ~/Documents, which macOS syncs via iCloud Drive.
+# iCloud materializes " 2"/" 3"/... conflict copies of files that were being
+# written while a sync pass ran — these are junk, never intentional. Ignored
+# so a mistimed `git add -A` can never pick one up. Moving the repo outside
+# an iCloud-synced folder is the real fix; this is just a safety net.
+* [0-9].*
+* [0-9]

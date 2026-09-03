@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import Notification from './Notification';
+import Notification, { NotificationType } from './Notification';
 
 const meta: Meta<typeof Notification> = {
   title: 'Molecules/Notification',
@@ -34,4 +35,35 @@ export const AllTypes: Story = {
       <Notification message="A new version is available." type="info" onClose={() => {}} />
     </div>
   ),
+};
+
+interface Item {
+  id: number;
+  type: NotificationType;
+  message: string;
+}
+
+const initialItems: Item[] = [
+  { id: 1, type: 'success', message: 'Saved successfully.' },
+  { id: 2, type: 'error', message: 'Something went wrong.' },
+  { id: 3, type: 'warning', message: 'This action is irreversible.' },
+  { id: 4, type: 'info', message: 'A new version is available.' },
+];
+
+export const Interactive: Story = {
+  render: () => {
+    const [items, setItems] = useState(initialItems);
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        {items.map(item => (
+          <Notification
+            key={item.id}
+            message={item.message}
+            type={item.type}
+            onClose={() => setItems(prev => prev.filter(i => i.id !== item.id))}
+          />
+        ))}
+      </div>
+    );
+  },
 };

@@ -1,827 +1,103 @@
 # EM UI Library
 
-## Description
-EM UI Library is a custom React component library built following Atomic Design principles.  
-It contains basic UI elements (atoms), composed components (molecules), larger units (organisms), templates, and layouts for rapid application development.
+A reusable React component library built with Atomic Design — TypeScript, tested, and accessible out of the box.
 
----
+[![npm version](https://img.shields.io/npm/v/em-ui-library.svg)](https://www.npmjs.com/package/em-ui-library)
+[![Deploy Storybook](https://github.com/EndlessMissery/em-ui-library/actions/workflows/deploy-storybook.yml/badge.svg)](https://github.com/EndlessMissery/em-ui-library/actions/workflows/deploy-storybook.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Library Structure
+**[Live Demo](https://endlessmissery.github.io/em-ui-library/)** · **[npm](https://www.npmjs.com/package/em-ui-library)** · **[GitHub](https://github.com/EndlessMissery/em-ui-library)**
 
-- **atoms** – basic components like buttons, inputs, labels, checkboxes, etc.
-- **molecules** – composed components such as Card, Modal, Notification, Tabs, ButtonGroup.
-- **organisms** – larger units like Login form, Register form, Dashboard, Notification Center.
-- **templates** – predefined page templates that assemble organisms.
-- **layouts** – base application layouts (e.g. main layout with navigation, sidebar, etc.).
+## Features
 
----
+- ✓ 35 components across atoms, molecules, organisms, and templates
+- ✓ Atomic Design architecture
+- ✓ Written in TypeScript, ships full type definitions
+- ✓ React 18 & 19 (peer dependency, tree-shakable via Rollup)
+- ✓ 138 tests (Vitest + React Testing Library)
+- ✓ Accessibility built in — keyboard navigation, focus management, ARIA, checked with jest-axe
+- ✓ Live, browsable Storybook documentation for every component
 
-## Components list
-- [Atoms](#atoms)
+## In action
 
+| Modal | Tabs | Accordion |
+| --- | --- | --- |
+| ![Modal component with focus trap and Escape-to-close](docs/media/modal.gif) | ![Tabs switching between panels with arrow-key navigation](docs/media/tabs.gif) | ![Accordion expanding and collapsing panels](docs/media/accordion.gif) |
 
-- [Molecules](#molecules)
-  - [Accordion](#accordion)
-  - [Avatar](#avatar)
-  - [Badge](#badge)
-  - [ButtonGroup](#buttongroup) 
-  - [Card](#card)
-  - [FormField](#formfield)
-  - [Modal](#modal)
-  - [Notification](#notification)
-  - [Tabs](#tabs)
-  - [Tooltip](#tooltip)
+| Tooltip | Notification | Login |
+| --- | --- | --- |
+| ![Tooltip appearing on hover with an aria-describedby link](docs/media/tooltip.gif) | ![Notifications being dismissed one by one](docs/media/notification.gif) | ![Login form being filled in and submitted](docs/media/login.gif) |
 
-- [Organisms](#organisms)
-  - [Dashboard](#dashboard)
-  - [Header](#header)
-  - [Footer](#footer)
-  - [ListView](#listview) 
-  - [Login](#login)
-  - [NotificationCenter](#notificationcenter)
-  - [Register](#register)
-  - [SearchBar](#searchbar)
-  - [Sidebar](#sidebar)
-  - [UserProfile](#userprofile)
+More at the **[Storybook live demo](https://endlessmissery.github.io/em-ui-library/)**.
 
-- [Templates](#templates)
-  - [AuthLayout](#authlayout)
-  - [DashboardLayout](#dashboardlayout)
-  - [FormLayout](#formlayout)
-  - [ProfileLayout](#profilelayout)
-  - [SettingsLayout](#settingslayout)
----
-
-## Installation and Usage
-
-### Installing the library in your project
+## Installation
 
 ```bash
 npm install em-ui-library
 ```
 
-## Using Components
+`react` and `react-dom` (^18 or ^19) are peer dependencies — install them in your app if they aren't already there.
 
-## Atoms
-```
-import { Button } from 'em-ui-library';
+## Usage
 
-function App() {
-  return (
-    <div>
-      <Login />
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
----
-
-## Molecules
-
-## Accordion
-```
-import { Accordion } from 'em-ui-library';
-
-<Accordion title="More information">
-  <p>accordion example</p>
-</Accordion>
-```
-
-## Avatar
-```
-import { Avatar } from 'em-ui-library';
-
-<Avatar src="https://example.com/avatar.jpg" alt="avatar" />
-```
-
-## Badge
-```
-import { Badge } from 'em-ui-library';
-
-<Badge type="info">New</Badge>
-```
-
-## ButtonGroup
-```
-import { ButtonGroup, Button } from 'em-ui-library';
-
-<ButtonGroup>
-  <Button>Save</Button>
-  <Button>Cancel</Button>
-</ButtonGroup>
-```
-
-## Card
-```
-import { Card } from 'em-ui-library';
-
-<Card>
-  <h3>Name</h3>
-  <p>Card info</p>
-</Card>
-```
-
-## FormField
-```
-import { FormField, Input, Label } from 'em-ui-library';
-
-<FormField>
-  <Label htmlFor="email">Email</Label>
-  <Input id="email" type="email" />
-</FormField>
-```
-
-## Modal
-```
-import { Modal, Button } from 'em-ui-library';
-
-<Modal isOpen={true} onClose={() => console.log('Close')}>
-  <h2>Warning</h2>
-  <p>Continue?</p>
-  <Button>OK</Button>
-</Modal>
-```
-
-## Notification
-```
-import { Notification } from 'em-ui-library';
-
-function App() {
-  return (
-    <Notification
-      type="success"
-      message="Saved!"
-    />
-  );
-}
-```
-
-## Tabs
-```
-import { Tabs } from 'em-ui-library';
-
-<Tabs
-  tabs={[
-    { id: 1, label: "Tab 1" },
-    { id: 2, label: "Tab 2" },
-  ]}
-/>
-
-```
-
-## Tooltip
-```
-import { Tooltip } from 'em-ui-library';
-
-<Tooltip content="Info">
-  <button>?</button>
-</Tooltip>
-```
-
----
-
-## Organisms
-
-## Dashboard
-```
-import { Dashboard } from 'em-ui-library';
-
-const stats = [
-  { id: 1, title: 'Users', value: 1500, icon: '👥' },
-  { id: 2, title: 'Money', value: '450 000 $', icon: '💰' },
-];
-
-<Dashboard stats={stats} />
-```
-
-## Header
-```
-import { Header } from 'em-ui-library';
-
-<Header title="Administration" />
-```
-
-## Footer
-```
-import { Footer } from 'em-ui-library';
-
-<Footer>
-  <p>© 2025 EM Company</p>
-</Footer>
-```
-
-## ListView
-```
-import { ListView } from 'em-ui-library';
-
-<ListView
-  items={[
-    { id: 1, title: 'Log 1' },
-    { id: 2, title: 'Log 2' },
-  ]}
-/>
-```
-
-## Login
-```
-import { Login } from 'em-ui-library';
-
-<Login onSubmit={(data) => console.log('Login:', data)} />
-```
-
-## NotificationCenter
-```
-import { NotificationCenter } from 'em-ui-library';
-
-const notifications = [
-  { id: 1, type: 'success', message: 'Saved' },
-  { id: 2, type: 'error', message: 'Server error' },
-];
-
-<NotificationCenter
-  notifications={notifications}
-  onDismiss={(id) => console.log('Closed', id)}
-/>
-```
-
-## Register
-```
-import { Register } from 'em-ui-library';
-
-<Register onSubmit={(data) => console.log('Registered:', data)} />
-```
-
-## SearchBar
-```
-import { SearchBar } from 'em-ui-library';
-
-<SearchBar
-  placeholder="Search user"
-  onSearch={(query) => console.log('Search:', query)}
-/>
-```
-
-## Sidebar
-```
-import { Sidebar } from 'em-ui-library';
-
-<Sidebar
-  items={[
-    { id: 1, label: 'Dashboard' },
-    { id: 2, label: 'Settings' },
-  ]}
-/>
-
-```
-
-## UserProfile
-```
-import { UserProfile } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  const user = {
-    name: 'Name Surname',
-    email: 'example@example.com',
-    avatar: 'https://i.pravatar.cc/80?u=jan' 
-  };
-
-  const handleEdit = () => {
-    console.log('Edit profile');
-  };
-
-  const handleLogout = () => {
-    console.log('Logout');
-  };
-
-  return (
-    <UserProfile
-      user={user}
-      onEdit={handleEdit}
-      onLogout={handleLogout}
-    />
-  );
-}
-
-export default App;
-
-```
-
----
-
-## Templates
-
-## AuthLayout
-```
-import { AuthLayout } from 'em-ui-library';
+```tsx
+import { Button, Card, FormField } from 'em-ui-library';
 import 'em-ui-library/dist/index.css';
 
 function App() {
   return (
-    <AuthLayout>
-      <p>Please, login.</p>
-      {/* Login form or other content */}
-    </AuthLayout>
+    <Card title="Sign in">
+      <FormField id="email" label="Email" type="email" value="" onChange={() => {}} />
+      <Button variant="primary" type="submit">
+        Continue
+      </Button>
+    </Card>
   );
 }
-
-export default App;
 ```
 
-## DashboardLayout
-```
-import { DashboardLayout } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
+Every component's props, variants, and interactive states are documented and browsable in the [Storybook demo](https://endlessmissery.github.io/em-ui-library/) — that's the source of truth for usage, instead of code samples here that would drift out of date.
 
-function App() {
-  const user = { name: 'Name', email: 'example@example.com' };
+## Architecture
 
-  const handleLogout = () => {
-
-  };
-
-  return (
-    <DashboardLayout user={user} onLogout={handleLogout}>
-    </DashboardLayout>
-  );
-}
-
-export default App;
+Components are organized by [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) level, each composing only from the level below it:
 
 ```
-
-## FormLayout
-```
-import React from 'react';
-import { FormLayout } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  return (
-    <FormLayout title="Registrace" description="Fill credentials">
-      <form>
-        <div>
-          <label htmlFor="email">E-mail</label><br />
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label><br />
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </FormLayout>
-  );
-}
-
-export default App;
-
+atoms      → Button, Input, Select, Textarea, Checkbox, RadioButton, Label, Heading, Divider, Spinner
+molecules  → Accordion, Avatar, Badge, ButtonGroup, Card, FormField, Modal, Notification, Tabs, Tooltip
+organisms  → Dashboard, Header, Footer, ListView, Login, NotificationCenter, Register, SearchBar, Sidebar, UserProfile
+templates  → AuthLayout, DashboardLayout, FormLayout, ProfileLayout, SettingsLayout
 ```
 
-## ProfileLayout
+Each component lives in its own folder with its implementation, styles, tests, and Storybook stories colocated:
+
 ```
-import { ProfileLayout } from 'em-ui-library';
-
-const user = {
-  name: 'Name Surname',
-  email: 'example@example.com',
-  avatar: 'https://example.com/avatar.jpg',
-};
-
-const tabs = [
-  { id: 1, label: 'Profile' },
-  { id: 2, label: 'Settings' },
-];
-
-<ProfileLayout user={user} tabs={tabs}>
-  <p>Profile</p>
-</ProfileLayout>
+src/atoms/Button/
+  Button.tsx
+  Button.css
+  Button.test.tsx
+  Button.stories.tsx
+  index.ts
 ```
 
-## SettingsLayout
-```
-import { SettingsLayout } from 'em-ui-library';
+Design tokens (color, spacing, radius, shadow, typography) live in `src/styles/tokens.css` and ship with the package, so the whole library draws from one consistent palette that consumers can override.
 
-<SettingsLayout>
-  <h2>Account settings</h2>
-</SettingsLayout>
-```
-
----
-
-# EM UI Library
-
-## Popis
-EM UI Library je vlastní React komponentová knihovna postavená podle principů Atomic Designu.  
-Obsahuje základní UI prvky (atoms), složené komponenty (molecules), větší celky (organisms), šablony (templates) a layouty pro rychlou tvorbu aplikací.
-
----
-
-## Struktura knihovny
-
-- **atoms** – základní komponenty jako tlačítka, inputy, labely, checkboxy atd.
-- **molecules** – složené komponenty, např. Card, Modal, Notification, Tabs, ButtonGroup.
-- **organisms** – větší celky jako Login formulář, Register formulář, Dashboard, Notification Center.
-- **templates** – předdefinované šablony stránek skládající organisms.
-- **layouts** – základní layouty aplikace (např. hlavní layout s navigací, sidebar apod.).
-
----
-
-## Komponenty
-- [Atoms](#atoms)
-
-
-- [Molecules](#molecules)
-  - [Accordion](#accordion)
-  - [Avatar](#avatar)
-  - [Badge](#badge)
-  - [ButtonGroup](#buttongroup) 
-  - [Card](#card)
-  - [FormField](#formfield)
-  - [Modal](#modal)
-  - [Notification](#notification)
-  - [Tabs](#tabs)
-  - [Tooltip](#tooltip)
-
-- [Organisms](#organisms)
-  - [Dashboard](#dashboard)
-  - [Header](#header)
-  - [Footer](#footer)
-  - [ListView](#listview) 
-  - [Login](#login)
-  - [NotificationCenter](#notificationcenter)
-  - [Register](#register)
-  - [SearchBar](#searchbar)
-  - [Sidebar](#sidebar)
-  - [UserProfile](#userprofile)
-
-- [Templates](#templates)
-  - [AuthLayout](#authlayout)
-  - [DashboardLayout](#dashboardlayout)
-  - [FormLayout](#formlayout)
-  - [ProfileLayout](#profilelayout)
-  - [SettingsLayout](#settingslayout)
----
-
-## Instalace a použití
-
-### Instalace knihovny do projektu
+## Development
 
 ```bash
-
-npm install em-ui-library
+npm install          # install dependencies
+npm run storybook    # run Storybook locally at localhost:6006
+npm test             # run the test suite (Vitest + Testing Library)
+npm run test:coverage
+npm run typecheck
+npm run build         # bundle the library (Rollup) + emit type declarations
+npm run build-storybook
 ```
 
----
+## Tech stack
 
-## Příklady použití komponentů v praxi
+React · TypeScript · Rollup · Vitest · React Testing Library · jest-axe · Storybook
 
-## Atoms 
-```
-import { Button } from 'em-ui-library';
+## License
 
-function App() {
-  return (
-    <div>
-      <Login />
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
----
-
-## Molecules
-
-## Accordion
-```
-import { Accordion } from 'em-ui-library';
-
-<Accordion title="Více informací">
-  <p>Obsah akordeonu</p>
-</Accordion>
-```
-
-## Avatar
-```
-import { Avatar } from 'em-ui-library';
-
-<Avatar src="https://example.com/avatar.jpg" alt="Roman Kalita" />
-```
-
-## Badge
-```
-import { Badge } from 'em-ui-library';
-
-<Badge type="info">Nové</Badge>
-```
-
-## ButtonGroup
-```
-import { ButtonGroup, Button } from 'em-ui-library';
-
-<ButtonGroup>
-  <Button>Uložit</Button>
-  <Button>Zrušit</Button>
-</ButtonGroup>
-```
-
-## Card
-```
-import { Card } from 'em-ui-library';
-
-<Card>
-  <h3>Název</h3>
-  <p>Obsah karty</p>
-</Card>
-```
-
-## FormField
-```
-import { FormField, Input, Label } from 'em-ui-library';
-
-<FormField>
-  <Label htmlFor="email">Email</Label>
-  <Input id="email" type="email" />
-</FormField>
-```
-
-## Modal
-```
-import { Modal, Button } from 'em-ui-library';
-
-<Modal isOpen={true} onClose={() => console.log('Zavřeno')}>
-  <h2>Upozornění</h2>
-  <p>Chcete pokračovat?</p>
-  <Button>OK</Button>
-</Modal>
-```
-
-## Notification
-```
-import { Notification } from 'em-ui-library';
-
-function App() {
-  return (
-    <Notification
-      type="success"
-      message="Uloženo úspěšně!"
-    />
-  );
-}
-```
-
-## Tabs
-```
-import { Tabs } from 'em-ui-library';
-
-<Tabs
-  tabs={[
-    { id: 1, label: "Přehled" },
-    { id: 2, label: "Nastavení" },
-  ]}
-/>
-
-```
-
-## Tooltip
-```
-import { Tooltip } from 'em-ui-library';
-
-<Tooltip content="Nápověda">
-  <button>?</button>
-</Tooltip>
-```
-
----
-
-## Organisms
-
-## Dashboard
-```
-import { Dashboard } from 'em-ui-library';
-
-const stats = [
-  { id: 1, title: 'Uživatelé', value: 1500, icon: '👥' },
-  { id: 2, title: 'Tržby', value: '450 000 Kč', icon: '💰' },
-];
-
-<Dashboard stats={stats} />
-```
-
-## Header
-```
-import { Header } from 'em-ui-library';
-
-<Header title="Administrace" />
-```
-
-## Footer
-```
-import { Footer } from 'em-ui-library';
-
-<Footer>
-  <p>© 2025 EM Company</p>
-</Footer>
-```
-
-## ListView
-```
-import { ListView } from 'em-ui-library';
-
-<ListView
-  items={[
-    { id: 1, title: 'Záznam 1' },
-    { id: 2, title: 'Záznam 2' },
-  ]}
-/>
-```
-
-## Login
-```
-import { Login } from 'em-ui-library';
-
-<Login onSubmit={(data) => console.log('Přihlášen:', data)} />
-```
-
-## NotificationCenter
-```
-import { NotificationCenter } from 'em-ui-library';
-
-const notifications = [
-  { id: 1, type: 'success', message: 'Úspěšně uloženo' },
-  { id: 2, type: 'error', message: 'Chyba serveru' },
-];
-
-<NotificationCenter
-  notifications={notifications}
-  onDismiss={(id) => console.log('Zavřeno', id)}
-/>
-```
-
-## Register
-```
-import { Register } from 'em-ui-library';
-
-<Register onSubmit={(data) => console.log('Registrován:', data)} />
-```
-
-## SearchBar
-```
-import { SearchBar } from 'em-ui-library';
-
-<SearchBar
-  placeholder="Hledat uživatele"
-  onSearch={(query) => console.log('Hledat:', query)}
-/>
-```
-
-## Sidebar
-```
-import { Sidebar } from 'em-ui-library';
-
-<Sidebar
-  items={[
-    { id: 1, label: 'Dashboard' },
-    { id: 2, label: 'Nastavení' },
-  ]}
-/>
-
-```
-
-## UserProfile
-```
-import { UserProfile } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  const user = {
-    name: 'Name Surname',
-    email: 'example@example.com',
-    avatar: 'https://i.pravatar.cc/80?u=jan' 
-  };
-
-  const handleEdit = () => {
-    console.log('Edit profilu');
-  };
-
-  const handleLogout = () => {
-    console.log('Odhlášeno');
-  };
-
-  return (
-    <UserProfile
-      user={user}
-      onEdit={handleEdit}
-      onLogout={handleLogout}
-    />
-  );
-}
-
-export default App;
-
-```
-
----
-
-## Templates
-
-## AuthLayout
-```
-import { AuthLayout } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  return (
-    <AuthLayout>
-      <p>Přihlašte se.</p>
-      {/* Např. přihlašovací formulář */}
-    </AuthLayout>
-  );
-}
-
-export default App;
-```
-
-## DashboardLayout
-```
-import { DashboardLayout } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  const user = { name: 'Name', email: 'example@example.com' };
-
-  const handleLogout = () => {
-
-  };
-
-  return (
-    <DashboardLayout user={user} onLogout={handleLogout}>
-    </DashboardLayout>
-  );
-}
-
-export default App;
-```
-
-## FormLayout
-```
-import React from 'react';
-import { FormLayout } from 'em-ui-library';
-import 'em-ui-library/dist/index.css';
-
-function App() {
-  return (
-    <FormLayout title="Registrace" description="Zadejte prosím své údaje.">
-      <form>
-        <div>
-          <label htmlFor="email">E-mail</label><br />
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Heslo</label><br />
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Registrovat</button>
-      </form>
-    </FormLayout>
-  );
-}
-
-export default App;
-
-```
-
-## ProfileLayout
-```
-import { ProfileLayout } from 'em-ui-library';
-
-const user = {
-  name: 'Jméno přijmení',
-  email: 'example@example.com',
-  avatar: 'https://example.com/avatar.jpg',
-};
-
-const tabs = [
-  { id: 1, label: 'Profil' },
-  { id: 2, label: 'Nastavení' },
-];
-
-<ProfileLayout user={user} tabs={tabs}>
-  <p>Obsah profilu</p>
-</ProfileLayout>
-```
-
-## SettingsLayout
-```
-import { SettingsLayout } from 'em-ui-library';
-
-<SettingsLayout>
-  <h2>Nastavení účtu</h2>
-</SettingsLayout>
-```
-
----
+[MIT](LICENSE) © Roman Kalita

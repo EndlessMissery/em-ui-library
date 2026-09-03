@@ -6,6 +6,9 @@ const meta: Meta<typeof Tooltip> = {
   title: 'Molecules/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
+  // Tooltip renders above and centered on its trigger, so give it room in
+  // the isolated story — otherwise it's clipped by the canvas edges.
+  decorators: [Story => <div style={{ padding: '3rem 4rem' }}><Story /></div>],
 };
 
 export default meta;
